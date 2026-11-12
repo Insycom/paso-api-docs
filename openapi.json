@@ -1,0 +1,4402 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "PASO API",
+    "description": "API REST pública de PASO para integraciones autorizadas. Comprobantes internos; sin emisión fiscal electrónica ni presentación aduanera oficial.",
+    "version": "0.6.1"
+  },
+  "paths": {
+    "/api/v1/salud": {
+      "get": {
+        "tags": [
+          "Estado"
+        ],
+        "summary": "Health",
+        "operationId": "health_api_v1_salud_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          }
+        },
+        "security": []
+      }
+    },
+    "/api/v1/yo": {
+      "get": {
+        "tags": [
+          "Acceso"
+        ],
+        "summary": "Me",
+        "operationId": "me_api_v1_yo_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/recursos": {
+      "get": {
+        "tags": [
+          "Contrato"
+        ],
+        "summary": "Catalog",
+        "operationId": "catalog_api_v1_recursos_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/openapi.json": {
+      "get": {
+        "tags": [
+          "Contrato"
+        ],
+        "summary": "Openapi",
+        "operationId": "openapi_api_v1_openapi_json_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/resumen": {
+      "get": {
+        "tags": [
+          "Informes"
+        ],
+        "summary": "Overview",
+        "operationId": "overview_api_v1_resumen_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/informes/cuentas": {
+      "get": {
+        "tags": [
+          "Informes"
+        ],
+        "summary": "Accounts",
+        "operationId": "accounts_api_v1_informes_cuentas_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/informes/mensual": {
+      "get": {
+        "tags": [
+          "Informes"
+        ],
+        "summary": "Statistics",
+        "operationId": "statistics_api_v1_informes_mensual_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/datos/{recurso}": {
+      "get": {
+        "tags": [
+          "Datos"
+        ],
+        "summary": "Records",
+        "operationId": "records_api_v1_datos__recurso__get",
+        "parameters": [
+          {
+            "name": "recurso",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "$ref": "#/components/schemas/ResourceName"
+            }
+          },
+          {
+            "name": "q",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "maxLength": 200,
+              "default": "",
+              "title": "Q"
+            }
+          },
+          {
+            "name": "limite",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "maximum": 200,
+              "minimum": 1,
+              "default": 50,
+              "title": "Limite"
+            }
+          },
+          {
+            "name": "offset",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "minimum": 0,
+              "default": 0,
+              "title": "Offset"
+            }
+          },
+          {
+            "name": "inactivos",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "boolean",
+              "default": false,
+              "title": "Inactivos"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Datos"
+        ],
+        "summary": "Create Record",
+        "operationId": "create_record_api_v1_datos__recurso__post",
+        "parameters": [
+          {
+            "name": "recurso",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "$ref": "#/components/schemas/ResourceName"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Datos"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/datos/{recurso}/{ident}": {
+      "get": {
+        "tags": [
+          "Datos"
+        ],
+        "summary": "Record",
+        "operationId": "record_api_v1_datos__recurso___ident__get",
+        "parameters": [
+          {
+            "name": "recurso",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "$ref": "#/components/schemas/ResourceName"
+            }
+          },
+          {
+            "name": "ident",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "title": "Ident"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      },
+      "patch": {
+        "tags": [
+          "Datos"
+        ],
+        "summary": "Update Record",
+        "operationId": "update_record_api_v1_datos__recurso___ident__patch",
+        "parameters": [
+          {
+            "name": "recurso",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "$ref": "#/components/schemas/ResourceName"
+            }
+          },
+          {
+            "name": "ident",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "title": "Ident"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Cambio"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Datos"
+        ],
+        "summary": "Archive Record",
+        "operationId": "archive_record_api_v1_datos__recurso___ident__delete",
+        "parameters": [
+          {
+            "name": "recurso",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "$ref": "#/components/schemas/ResourceName"
+            }
+          },
+          {
+            "name": "ident",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "title": "Ident"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Version"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/exportar/{recurso}": {
+      "get": {
+        "tags": [
+          "Exportación"
+        ],
+        "summary": "Export",
+        "operationId": "export_api_v1_exportar__recurso__get",
+        "parameters": [
+          {
+            "name": "recurso",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "$ref": "#/components/schemas/ResourceName"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/operaciones/comprobantes": {
+      "post": {
+        "tags": [
+          "Operaciones"
+        ],
+        "summary": "Invoice",
+        "operationId": "invoice_api_v1_operaciones_comprobantes_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Comprobante"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/operaciones/pagos": {
+      "post": {
+        "tags": [
+          "Operaciones"
+        ],
+        "summary": "Payment",
+        "operationId": "payment_api_v1_operaciones_pagos_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Pago"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/operaciones/aplicaciones": {
+      "post": {
+        "tags": [
+          "Operaciones"
+        ],
+        "summary": "Compensate",
+        "operationId": "compensate_api_v1_operaciones_aplicaciones_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Compensacion"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/operaciones/stock": {
+      "post": {
+        "tags": [
+          "Operaciones"
+        ],
+        "summary": "Stock",
+        "operationId": "stock_api_v1_operaciones_stock_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Stock"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/operaciones/reparaciones": {
+      "post": {
+        "tags": [
+          "Operaciones"
+        ],
+        "summary": "Repair",
+        "operationId": "repair_api_v1_operaciones_reparaciones_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Reparacion"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/operaciones/{recurso}/{ident}/anular": {
+      "post": {
+        "tags": [
+          "Operaciones"
+        ],
+        "summary": "Void",
+        "operationId": "void_api_v1_operaciones__recurso___ident__anular_post",
+        "parameters": [
+          {
+            "name": "recurso",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "$ref": "#/components/schemas/ResourceName"
+            }
+          },
+          {
+            "name": "ident",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "title": "Ident"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Version"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/documentos/mic/siguiente": {
+      "get": {
+        "tags": [
+          "Operaciones"
+        ],
+        "summary": "Next Mic",
+        "operationId": "next_mic_api_v1_documentos_mic_siguiente_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/documentos/mic/{ident}/crt": {
+      "post": {
+        "tags": [
+          "Operaciones"
+        ],
+        "summary": "Add Mic Crt",
+        "operationId": "add_mic_crt_api_v1_documentos_mic__ident__crt_post",
+        "parameters": [
+          {
+            "name": "ident",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "title": "Ident"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/MicCrt"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/documentos/mic/{ident}/crt/{hoja_id}": {
+      "delete": {
+        "tags": [
+          "Operaciones"
+        ],
+        "summary": "Remove Mic Crt",
+        "operationId": "remove_mic_crt_api_v1_documentos_mic__ident__crt__hoja_id__delete",
+        "parameters": [
+          {
+            "name": "ident",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "title": "Ident"
+            }
+          },
+          {
+            "name": "hoja_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "title": "Hoja Id"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/MicCrtDelete"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/documentos/{recurso}/{ident}/{accion}": {
+      "post": {
+        "tags": [
+          "Operaciones"
+        ],
+        "summary": "Document Action",
+        "operationId": "document_action_api_v1_documentos__recurso___ident___accion__post",
+        "parameters": [
+          {
+            "name": "recurso",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "$ref": "#/components/schemas/ResourceName"
+            }
+          },
+          {
+            "name": "ident",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "title": "Ident"
+            }
+          },
+          {
+            "name": "accion",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "Accion"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Accion"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "Accion": {
+        "properties": {
+          "version": {
+            "type": "integer",
+            "exclusiveMinimum": 0.0,
+            "title": "Version"
+          },
+          "fecha": {
+            "anyOf": [
+              {
+                "type": "string",
+                "format": "date"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Fecha"
+          },
+          "cotizacion": {
+            "anyOf": [
+              {
+                "type": "number",
+                "maximum": 10000000.0,
+                "exclusiveMinimum": 0.0
+              },
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Cotizacion"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "version"
+        ],
+        "title": "Accion"
+      },
+      "Asignacion": {
+        "properties": {
+          "comprobante_id": {
+            "type": "integer",
+            "exclusiveMinimum": 0.0,
+            "title": "Comprobante Id"
+          },
+          "importe": {
+            "anyOf": [
+              {
+                "type": "number",
+                "maximum": 999999999.0,
+                "exclusiveMinimum": 0.0
+              },
+              {
+                "type": "string"
+              }
+            ],
+            "title": "Importe"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "comprobante_id",
+          "importe"
+        ],
+        "title": "Asignacion"
+      },
+      "Cambio": {
+        "properties": {
+          "datos": {
+            "additionalProperties": true,
+            "type": "object",
+            "title": "Datos"
+          },
+          "version": {
+            "type": "integer",
+            "exclusiveMinimum": 0.0,
+            "title": "Version"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "datos",
+          "version"
+        ],
+        "title": "Cambio"
+      },
+      "CashMovement": {
+        "properties": {
+          "fecha": {
+            "type": "string",
+            "format": "date",
+            "title": "Fecha"
+          },
+          "importe": {
+            "anyOf": [
+              {
+                "type": "number",
+                "maximum": 999999999.0,
+                "exclusiveMinimum": 0.0
+              },
+              {
+                "type": "string"
+              }
+            ],
+            "title": "Importe"
+          },
+          "referencia": {
+            "type": "string",
+            "maxLength": 200,
+            "title": "Referencia",
+            "default": ""
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "fecha",
+          "importe"
+        ],
+        "title": "CashMovement"
+      },
+      "Clave": {
+        "properties": {
+          "nombre": {
+            "type": "string",
+            "maxLength": 80,
+            "minLength": 1,
+            "title": "Nombre"
+          },
+          "permiso": {
+            "type": "string",
+            "pattern": "^(lectura|escritura)$",
+            "title": "Permiso",
+            "default": "lectura"
+          },
+          "dias": {
+            "type": "integer",
+            "maximum": 365.0,
+            "minimum": 1.0,
+            "title": "Dias",
+            "default": 90
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "nombre"
+        ],
+        "title": "Clave"
+      },
+      "Compensacion": {
+        "properties": {
+          "fecha": {
+            "type": "string",
+            "format": "date",
+            "title": "Fecha"
+          },
+          "credito_id": {
+            "type": "integer",
+            "exclusiveMinimum": 0.0,
+            "title": "Credito Id"
+          },
+          "debito_id": {
+            "type": "integer",
+            "exclusiveMinimum": 0.0,
+            "title": "Debito Id"
+          },
+          "importe": {
+            "anyOf": [
+              {
+                "type": "number",
+                "maximum": 999999999.0,
+                "exclusiveMinimum": 0.0
+              },
+              {
+                "type": "string"
+              }
+            ],
+            "title": "Importe"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "fecha",
+          "credito_id",
+          "debito_id",
+          "importe"
+        ],
+        "title": "Compensacion"
+      },
+      "Comprobante": {
+        "properties": {
+          "operacion": {
+            "type": "string",
+            "enum": [
+              "venta",
+              "compra"
+            ],
+            "title": "Operacion"
+          },
+          "tipo": {
+            "type": "string",
+            "enum": [
+              "FC",
+              "NC",
+              "ND"
+            ],
+            "title": "Tipo",
+            "default": "FC"
+          },
+          "tercero_id": {
+            "type": "integer",
+            "exclusiveMinimum": 0.0,
+            "title": "Tercero Id"
+          },
+          "fecha": {
+            "type": "string",
+            "format": "date",
+            "title": "Fecha"
+          },
+          "moneda_id": {
+            "type": "integer",
+            "exclusiveMinimum": 0.0,
+            "title": "Moneda Id"
+          },
+          "letra": {
+            "type": "string",
+            "enum": [
+              "A",
+              "B",
+              "C",
+              "E"
+            ],
+            "title": "Letra"
+          },
+          "impuesto_id": {
+            "type": "integer",
+            "exclusiveMinimum": 0.0,
+            "title": "Impuesto Id"
+          },
+          "condicion_id": {
+            "type": "integer",
+            "exclusiveMinimum": 0.0,
+            "title": "Condicion Id"
+          },
+          "cotizacion": {
+            "anyOf": [
+              {
+                "type": "number",
+                "maximum": 10000000.0,
+                "exclusiveMinimum": 0.0
+              },
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Cotizacion"
+          },
+          "numero_externo": {
+            "anyOf": [
+              {
+                "type": "string",
+                "maxLength": 60,
+                "minLength": 1
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Numero Externo"
+          },
+          "aplica_impuestos": {
+            "type": "boolean",
+            "title": "Aplica Impuestos",
+            "default": true
+          },
+          "lineas": {
+            "items": {
+              "$ref": "#/components/schemas/Linea"
+            },
+            "type": "array",
+            "maxItems": 100,
+            "minItems": 1,
+            "title": "Lineas"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "operacion",
+          "tercero_id",
+          "fecha",
+          "moneda_id",
+          "letra",
+          "impuesto_id",
+          "condicion_id",
+          "lineas"
+        ],
+        "title": "Comprobante"
+      },
+      "Configuracion": {
+        "properties": {
+          "moneda_base_id": {
+            "type": "integer",
+            "exclusiveMinimum": 0.0,
+            "title": "Moneda Base Id"
+          },
+          "sucursal": {
+            "type": "integer",
+            "maximum": 9999.0,
+            "minimum": 1.0,
+            "title": "Sucursal",
+            "default": 1
+          },
+          "identificacion": {
+            "type": "string",
+            "maxLength": 40,
+            "title": "Identificacion",
+            "default": ""
+          },
+          "direccion": {
+            "type": "string",
+            "maxLength": 200,
+            "title": "Direccion",
+            "default": ""
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "moneda_base_id"
+        ],
+        "title": "Configuracion"
+      },
+      "Credential": {
+        "properties": {
+          "nombre": {
+            "type": "string",
+            "maxLength": 80,
+            "minLength": 1,
+            "title": "Nombre"
+          },
+          "permiso": {
+            "type": "string",
+            "pattern": "^(lectura|escritura|administracion)$",
+            "title": "Permiso",
+            "default": "lectura"
+          },
+          "dias": {
+            "type": "integer",
+            "maximum": 365.0,
+            "minimum": 1.0,
+            "title": "Dias",
+            "default": 30
+          },
+          "todos_los_tenants": {
+            "type": "boolean",
+            "title": "Todos Los Tenants",
+            "default": false
+          },
+          "tenants": {
+            "items": {
+              "type": "integer"
+            },
+            "type": "array",
+            "maxItems": 100,
+            "title": "Tenants"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "nombre"
+        ],
+        "title": "Credential"
+      },
+      "Datos": {
+        "properties": {
+          "datos": {
+            "additionalProperties": true,
+            "type": "object",
+            "title": "Datos"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "datos"
+        ],
+        "title": "Datos"
+      },
+      "Decision": {
+        "properties": {
+          "aprobar": {
+            "type": "boolean",
+            "title": "Aprobar"
+          },
+          "version": {
+            "type": "integer",
+            "exclusiveMinimum": 0.0,
+            "title": "Version"
+          },
+          "nota": {
+            "type": "string",
+            "maxLength": 1000,
+            "title": "Nota",
+            "default": ""
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "aprobar",
+          "version"
+        ],
+        "title": "Decision"
+      },
+      "Destination": {
+        "properties": {
+          "correo": {
+            "type": "string",
+            "maxLength": 254,
+            "minLength": 3,
+            "title": "Correo"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "correo"
+        ],
+        "title": "Destination"
+      },
+      "DriverClose": {
+        "properties": {
+          "regreso": {
+            "type": "string",
+            "format": "date",
+            "title": "Regreso"
+          },
+          "km_regreso": {
+            "type": "integer",
+            "maximum": 99999999.0,
+            "minimum": 0.0,
+            "title": "Km Regreso"
+          },
+          "efectivo_declarado": {
+            "anyOf": [
+              {
+                "type": "number",
+                "maximum": 999999999.0,
+                "minimum": 0.0
+              },
+              {
+                "type": "string"
+              }
+            ],
+            "title": "Efectivo Declarado"
+          },
+          "nota": {
+            "type": "string",
+            "maxLength": 1000,
+            "title": "Nota",
+            "default": ""
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "regreso",
+          "km_regreso",
+          "efectivo_declarado"
+        ],
+        "title": "DriverClose"
+      },
+      "DriverLink": {
+        "properties": {
+          "usuario_id": {
+            "type": "integer",
+            "exclusiveMinimum": 0.0,
+            "title": "Usuario Id"
+          },
+          "chofer_id": {
+            "type": "integer",
+            "exclusiveMinimum": 0.0,
+            "title": "Chofer Id"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "usuario_id",
+          "chofer_id"
+        ],
+        "title": "DriverLink"
+      },
+      "DriverUser": {
+        "properties": {
+          "usuario": {
+            "type": "string",
+            "pattern": "^[A-Za-z0-9_.-]{3,60}$",
+            "title": "Usuario"
+          },
+          "nombre": {
+            "type": "string",
+            "maxLength": 100,
+            "minLength": 1,
+            "title": "Nombre"
+          },
+          "password": {
+            "type": "string",
+            "maxLength": 256,
+            "minLength": 12,
+            "title": "Password"
+          },
+          "chofer_id": {
+            "type": "integer",
+            "exclusiveMinimum": 0.0,
+            "title": "Chofer Id"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "usuario",
+          "nombre",
+          "password",
+          "chofer_id"
+        ],
+        "title": "DriverUser"
+      },
+      "EditTenant": {
+        "properties": {
+          "nombre": {
+            "type": "string",
+            "maxLength": 120,
+            "minLength": 1,
+            "title": "Nombre"
+          },
+          "correo_admin": {
+            "type": "string",
+            "maxLength": 254,
+            "title": "Correo Admin"
+          },
+          "notas": {
+            "type": "string",
+            "maxLength": 2000,
+            "title": "Notas",
+            "default": ""
+          },
+          "mailcow": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/Settings"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "version": {
+            "type": "integer",
+            "exclusiveMinimum": 0.0,
+            "title": "Version"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "nombre",
+          "correo_admin",
+          "version"
+        ],
+        "title": "EditTenant"
+      },
+      "EditUser": {
+        "properties": {
+          "nombre": {
+            "type": "string",
+            "maxLength": 100,
+            "minLength": 1,
+            "title": "Nombre"
+          },
+          "correo": {
+            "type": "string",
+            "maxLength": 254,
+            "title": "Correo",
+            "default": ""
+          },
+          "rol": {
+            "type": "string",
+            "pattern": "^(superadmin|admin|operador|consulta|logistica|chofer)$",
+            "title": "Rol"
+          },
+          "empresas": {
+            "items": {
+              "type": "integer"
+            },
+            "type": "array",
+            "maxItems": 100,
+            "title": "Empresas"
+          },
+          "activo": {
+            "type": "boolean",
+            "title": "Activo",
+            "default": true
+          },
+          "password": {
+            "anyOf": [
+              {
+                "type": "string",
+                "maxLength": 256,
+                "minLength": 12
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Password"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "nombre",
+          "rol"
+        ],
+        "title": "EditUser"
+      },
+      "Empresa": {
+        "properties": {
+          "nombre": {
+            "type": "string",
+            "maxLength": 120,
+            "minLength": 1,
+            "title": "Nombre"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "nombre"
+        ],
+        "title": "Empresa"
+      },
+      "ExpectedExpense": {
+        "properties": {
+          "fecha": {
+            "type": "string",
+            "format": "date",
+            "title": "Fecha"
+          },
+          "concepto": {
+            "type": "string",
+            "maxLength": 200,
+            "minLength": 1,
+            "title": "Concepto"
+          },
+          "importe": {
+            "anyOf": [
+              {
+                "type": "number",
+                "maximum": 999999999.0,
+                "exclusiveMinimum": 0.0
+              },
+              {
+                "type": "string"
+              }
+            ],
+            "title": "Importe"
+          },
+          "comprobante": {
+            "type": "string",
+            "maxLength": 100,
+            "title": "Comprobante",
+            "default": ""
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "fecha",
+          "concepto",
+          "importe"
+        ],
+        "title": "ExpectedExpense"
+      },
+      "ExpenseActual": {
+        "properties": {
+          "fecha": {
+            "type": "string",
+            "format": "date",
+            "title": "Fecha"
+          },
+          "concepto": {
+            "type": "string",
+            "maxLength": 200,
+            "minLength": 1,
+            "title": "Concepto"
+          },
+          "importe": {
+            "anyOf": [
+              {
+                "type": "number",
+                "maximum": 999999999.0,
+                "exclusiveMinimum": 0.0
+              },
+              {
+                "type": "string"
+              }
+            ],
+            "title": "Importe"
+          },
+          "comprobante": {
+            "type": "string",
+            "maxLength": 100,
+            "title": "Comprobante",
+            "default": ""
+          },
+          "nota": {
+            "type": "string",
+            "maxLength": 1000,
+            "title": "Nota",
+            "default": ""
+          },
+          "solicitud_id": {
+            "anyOf": [
+              {
+                "type": "integer",
+                "exclusiveMinimum": 0.0
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Solicitud Id"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "fecha",
+          "concepto",
+          "importe"
+        ],
+        "title": "ExpenseActual"
+      },
+      "ExpenseRequest": {
+        "properties": {
+          "fecha": {
+            "type": "string",
+            "format": "date",
+            "title": "Fecha"
+          },
+          "concepto": {
+            "type": "string",
+            "maxLength": 200,
+            "minLength": 1,
+            "title": "Concepto"
+          },
+          "importe": {
+            "anyOf": [
+              {
+                "type": "number",
+                "maximum": 999999999.0,
+                "exclusiveMinimum": 0.0
+              },
+              {
+                "type": "string"
+              }
+            ],
+            "title": "Importe"
+          },
+          "comprobante": {
+            "type": "string",
+            "maxLength": 100,
+            "title": "Comprobante",
+            "default": ""
+          },
+          "nota": {
+            "type": "string",
+            "maxLength": 1000,
+            "title": "Nota",
+            "default": ""
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "fecha",
+          "concepto",
+          "importe"
+        ],
+        "title": "ExpenseRequest"
+      },
+      "HTTPValidationError": {
+        "properties": {
+          "detail": {
+            "items": {
+              "$ref": "#/components/schemas/ValidationError"
+            },
+            "type": "array",
+            "title": "Detail"
+          }
+        },
+        "type": "object",
+        "title": "HTTPValidationError"
+      },
+      "Inicio": {
+        "properties": {
+          "usuario": {
+            "type": "string",
+            "maxLength": 60,
+            "minLength": 1,
+            "title": "Usuario"
+          },
+          "password": {
+            "type": "string",
+            "maxLength": 256,
+            "minLength": 1,
+            "title": "Password"
+          },
+          "nombre": {
+            "type": "string",
+            "maxLength": 100,
+            "minLength": 1,
+            "title": "Nombre"
+          },
+          "empresa": {
+            "type": "string",
+            "maxLength": 120,
+            "minLength": 1,
+            "title": "Empresa"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "usuario",
+          "password",
+          "nombre",
+          "empresa"
+        ],
+        "title": "Inicio"
+      },
+      "License": {
+        "properties": {
+          "meses": {
+            "type": "integer",
+            "maximum": 120.0,
+            "minimum": 1.0,
+            "title": "Meses",
+            "default": 6
+          },
+          "version": {
+            "type": "integer",
+            "minimum": 0.0,
+            "title": "Version"
+          },
+          "modo": {
+            "type": "string",
+            "pattern": "^(renovar|reemplazar)$",
+            "title": "Modo",
+            "default": "renovar"
+          },
+          "inicio": {
+            "anyOf": [
+              {
+                "type": "string",
+                "format": "date"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Inicio"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "version"
+        ],
+        "title": "License"
+      },
+      "Linea": {
+        "properties": {
+          "detalle": {
+            "type": "string",
+            "maxLength": 250,
+            "minLength": 1,
+            "title": "Detalle"
+          },
+          "cantidad": {
+            "anyOf": [
+              {
+                "type": "number",
+                "maximum": 1000000.0,
+                "exclusiveMinimum": 0.0
+              },
+              {
+                "type": "string"
+              }
+            ],
+            "title": "Cantidad"
+          },
+          "precio": {
+            "anyOf": [
+              {
+                "type": "number",
+                "maximum": 999999999.0,
+                "minimum": 0.0
+              },
+              {
+                "type": "string"
+              }
+            ],
+            "title": "Precio"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "detalle",
+          "cantidad",
+          "precio"
+        ],
+        "title": "Linea"
+      },
+      "Login": {
+        "properties": {
+          "usuario": {
+            "type": "string",
+            "maxLength": 60,
+            "minLength": 1,
+            "title": "Usuario"
+          },
+          "password": {
+            "type": "string",
+            "maxLength": 256,
+            "minLength": 1,
+            "title": "Password"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "usuario",
+          "password"
+        ],
+        "title": "Login"
+      },
+      "LogisticsClose": {
+        "properties": {
+          "version": {
+            "type": "integer",
+            "exclusiveMinimum": 0.0,
+            "title": "Version"
+          },
+          "devolucion": {
+            "anyOf": [
+              {
+                "type": "number",
+                "maximum": 999999999.0,
+                "minimum": 0.0
+              },
+              {
+                "type": "string"
+              }
+            ],
+            "title": "Devolucion"
+          },
+          "fecha": {
+            "type": "string",
+            "format": "date",
+            "title": "Fecha"
+          },
+          "nota": {
+            "type": "string",
+            "maxLength": 1000,
+            "title": "Nota",
+            "default": ""
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "version",
+          "devolucion",
+          "fecha"
+        ],
+        "title": "LogisticsClose"
+      },
+      "MailSettings": {
+        "properties": {
+          "habilitado": {
+            "type": "boolean",
+            "title": "Habilitado",
+            "default": false
+          },
+          "host": {
+            "type": "string",
+            "maxLength": 253,
+            "title": "Host",
+            "default": ""
+          },
+          "puerto": {
+            "type": "integer",
+            "maximum": 65535.0,
+            "minimum": 1.0,
+            "title": "Puerto",
+            "default": 587
+          },
+          "seguridad": {
+            "type": "string",
+            "pattern": "^(starttls|tls)$",
+            "title": "Seguridad",
+            "default": "starttls"
+          },
+          "usuario": {
+            "type": "string",
+            "maxLength": 254,
+            "title": "Usuario",
+            "default": ""
+          },
+          "password": {
+            "anyOf": [
+              {
+                "type": "string",
+                "maxLength": 1000
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Password"
+          },
+          "remitente": {
+            "type": "string",
+            "maxLength": 254,
+            "title": "Remitente",
+            "default": ""
+          },
+          "nombre": {
+            "type": "string",
+            "maxLength": 120,
+            "minLength": 1,
+            "title": "Nombre",
+            "default": "PASO"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "title": "MailSettings"
+      },
+      "MailTest": {
+        "properties": {
+          "destinatario": {
+            "type": "string",
+            "maxLength": 254,
+            "title": "Destinatario"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "destinatario"
+        ],
+        "title": "MailTest"
+      },
+      "MicCrt": {
+        "properties": {
+          "version": {
+            "type": "integer",
+            "exclusiveMinimum": 0.0,
+            "title": "Version"
+          },
+          "crt_id": {
+            "type": "integer",
+            "exclusiveMinimum": 0.0,
+            "title": "Crt Id"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "version",
+          "crt_id"
+        ],
+        "title": "MicCrt"
+      },
+      "MicCrtDelete": {
+        "properties": {
+          "version": {
+            "type": "integer",
+            "exclusiveMinimum": 0.0,
+            "title": "Version"
+          },
+          "hoja_version": {
+            "type": "integer",
+            "exclusiveMinimum": 0.0,
+            "title": "Hoja Version"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "version",
+          "hoja_version"
+        ],
+        "title": "MicCrtDelete"
+      },
+      "NewTenant": {
+        "properties": {
+          "nombre": {
+            "type": "string",
+            "maxLength": 120,
+            "minLength": 1,
+            "title": "Nombre"
+          },
+          "correo_admin": {
+            "type": "string",
+            "maxLength": 254,
+            "title": "Correo Admin"
+          },
+          "notas": {
+            "type": "string",
+            "maxLength": 2000,
+            "title": "Notas",
+            "default": ""
+          },
+          "mailcow": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/Settings"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "meses": {
+            "type": "integer",
+            "maximum": 120.0,
+            "minimum": 0.0,
+            "title": "Meses",
+            "default": 6
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "nombre",
+          "correo_admin"
+        ],
+        "title": "NewTenant"
+      },
+      "NewUser": {
+        "properties": {
+          "nombre": {
+            "type": "string",
+            "maxLength": 100,
+            "minLength": 1,
+            "title": "Nombre"
+          },
+          "correo": {
+            "type": "string",
+            "maxLength": 254,
+            "title": "Correo",
+            "default": ""
+          },
+          "rol": {
+            "type": "string",
+            "pattern": "^(superadmin|admin|operador|consulta|logistica|chofer)$",
+            "title": "Rol"
+          },
+          "empresas": {
+            "items": {
+              "type": "integer"
+            },
+            "type": "array",
+            "maxItems": 100,
+            "title": "Empresas"
+          },
+          "usuario": {
+            "type": "string",
+            "pattern": "^[A-Za-z0-9_.-]{3,60}$",
+            "title": "Usuario"
+          },
+          "password": {
+            "type": "string",
+            "maxLength": 256,
+            "minLength": 12,
+            "title": "Password"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "nombre",
+          "rol",
+          "usuario",
+          "password"
+        ],
+        "title": "NewUser"
+      },
+      "Pago": {
+        "properties": {
+          "fecha": {
+            "type": "string",
+            "format": "date",
+            "title": "Fecha"
+          },
+          "operacion": {
+            "type": "string",
+            "enum": [
+              "venta",
+              "compra"
+            ],
+            "title": "Operacion"
+          },
+          "moneda_id": {
+            "type": "integer",
+            "exclusiveMinimum": 0.0,
+            "title": "Moneda Id"
+          },
+          "medio": {
+            "type": "string",
+            "enum": [
+              "Transferencia",
+              "Efectivo",
+              "Cheque",
+              "Otro"
+            ],
+            "title": "Medio",
+            "default": "Transferencia"
+          },
+          "referencia": {
+            "type": "string",
+            "maxLength": 200,
+            "title": "Referencia",
+            "default": ""
+          },
+          "asignaciones": {
+            "items": {
+              "$ref": "#/components/schemas/Asignacion"
+            },
+            "type": "array",
+            "maxItems": 100,
+            "minItems": 1,
+            "title": "Asignaciones"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "fecha",
+          "operacion",
+          "moneda_id",
+          "asignaciones"
+        ],
+        "title": "Pago"
+      },
+      "Password": {
+        "properties": {
+          "actual": {
+            "type": "string",
+            "maxLength": 256,
+            "minLength": 1,
+            "title": "Actual"
+          },
+          "nueva": {
+            "type": "string",
+            "maxLength": 256,
+            "minLength": 12,
+            "title": "Nueva"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "actual",
+          "nueva"
+        ],
+        "title": "Password"
+      },
+      "Reparacion": {
+        "properties": {
+          "fecha": {
+            "type": "string",
+            "format": "date",
+            "title": "Fecha"
+          },
+          "equipo_id": {
+            "type": "integer",
+            "exclusiveMinimum": 0.0,
+            "title": "Equipo Id"
+          },
+          "repuesto_id": {
+            "type": "integer",
+            "exclusiveMinimum": 0.0,
+            "title": "Repuesto Id"
+          },
+          "proveedor_id": {
+            "anyOf": [
+              {
+                "type": "integer",
+                "exclusiveMinimum": 0.0
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Proveedor Id"
+          },
+          "cantidad": {
+            "type": "integer",
+            "maximum": 999999.0,
+            "exclusiveMinimum": 0.0,
+            "title": "Cantidad"
+          },
+          "costo": {
+            "anyOf": [
+              {
+                "type": "number",
+                "maximum": 999999999.0,
+                "minimum": 0.0
+              },
+              {
+                "type": "string"
+              }
+            ],
+            "title": "Costo"
+          },
+          "kilometros": {
+            "type": "integer",
+            "maximum": 99999999.0,
+            "minimum": 0.0,
+            "title": "Kilometros",
+            "default": 0
+          },
+          "detalle": {
+            "type": "string",
+            "maxLength": 500,
+            "minLength": 1,
+            "title": "Detalle"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "fecha",
+          "equipo_id",
+          "repuesto_id",
+          "cantidad",
+          "costo",
+          "detalle"
+        ],
+        "title": "Reparacion"
+      },
+      "ResourceName": {
+        "type": "string",
+        "enum": [
+          "clientes",
+          "proveedores",
+          "propietarios",
+          "empresas",
+          "choferes",
+          "equipos",
+          "distancias",
+          "monedas",
+          "impuestos",
+          "condiciones",
+          "cotizaciones",
+          "crt",
+          "mic",
+          "mic_hojas",
+          "hojas_ruta",
+          "desgloses",
+          "rendiciones",
+          "gastos",
+          "repuestos",
+          "comprobantes",
+          "pagos",
+          "aplicaciones",
+          "reparaciones",
+          "stock"
+        ],
+        "title": "ResourceName"
+      },
+      "Settings": {
+        "properties": {
+          "habilitado": {
+            "type": "boolean",
+            "title": "Habilitado",
+            "default": false
+          },
+          "url_base": {
+            "type": "string",
+            "maxLength": 500,
+            "title": "Url Base",
+            "default": ""
+          },
+          "client_id": {
+            "type": "string",
+            "maxLength": 300,
+            "title": "Client Id",
+            "default": ""
+          },
+          "client_secret": {
+            "anyOf": [
+              {
+                "type": "string",
+                "maxLength": 2000
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Client Secret"
+          },
+          "redirect_uri": {
+            "type": "string",
+            "maxLength": 1000,
+            "title": "Redirect Uri",
+            "default": ""
+          },
+          "dominios": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array",
+            "maxItems": 100,
+            "title": "Dominios"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "title": "Settings"
+      },
+      "Stock": {
+        "properties": {
+          "fecha": {
+            "type": "string",
+            "format": "date",
+            "title": "Fecha"
+          },
+          "repuesto_id": {
+            "type": "integer",
+            "exclusiveMinimum": 0.0,
+            "title": "Repuesto Id"
+          },
+          "cantidad": {
+            "type": "integer",
+            "maximum": 999999.0,
+            "minimum": -999999.0,
+            "title": "Cantidad"
+          },
+          "motivo": {
+            "type": "string",
+            "maxLength": 250,
+            "minLength": 3,
+            "title": "Motivo"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "fecha",
+          "repuesto_id",
+          "cantidad",
+          "motivo"
+        ],
+        "title": "Stock"
+      },
+      "Suspension": {
+        "properties": {
+          "suspendida": {
+            "type": "boolean",
+            "title": "Suspendida"
+          },
+          "version": {
+            "type": "integer",
+            "exclusiveMinimum": 0.0,
+            "title": "Version"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "suspendida",
+          "version"
+        ],
+        "title": "Suspension"
+      },
+      "TenantRole": {
+        "properties": {
+          "rol": {
+            "type": "string",
+            "pattern": "^(consulta|operador|admin|logistica|chofer)$",
+            "title": "Rol"
+          },
+          "version": {
+            "type": "integer",
+            "minimum": 0.0,
+            "title": "Version"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "rol",
+          "version"
+        ],
+        "title": "TenantRole"
+      },
+      "Trip": {
+        "properties": {
+          "numero": {
+            "type": "string",
+            "maxLength": 40,
+            "minLength": 1,
+            "title": "Numero"
+          },
+          "fecha": {
+            "type": "string",
+            "format": "date",
+            "title": "Fecha"
+          },
+          "chofer_id": {
+            "type": "integer",
+            "exclusiveMinimum": 0.0,
+            "title": "Chofer Id"
+          },
+          "equipo_id": {
+            "type": "integer",
+            "exclusiveMinimum": 0.0,
+            "title": "Equipo Id"
+          },
+          "mic_id": {
+            "anyOf": [
+              {
+                "type": "integer",
+                "exclusiveMinimum": 0.0
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Mic Id"
+          },
+          "origen": {
+            "type": "string",
+            "maxLength": 180,
+            "minLength": 1,
+            "title": "Origen"
+          },
+          "destino": {
+            "type": "string",
+            "maxLength": 180,
+            "minLength": 1,
+            "title": "Destino"
+          },
+          "kilometros": {
+            "type": "integer",
+            "maximum": 100000.0,
+            "minimum": 0.0,
+            "title": "Kilometros",
+            "default": 0
+          },
+          "moneda_id": {
+            "type": "integer",
+            "exclusiveMinimum": 0.0,
+            "title": "Moneda Id"
+          },
+          "anticipo": {
+            "anyOf": [
+              {
+                "type": "number",
+                "maximum": 999999999.0,
+                "minimum": 0.0
+              },
+              {
+                "type": "string"
+              }
+            ],
+            "title": "Anticipo",
+            "default": "0"
+          },
+          "km_salida": {
+            "type": "integer",
+            "maximum": 99999999.0,
+            "minimum": 0.0,
+            "title": "Km Salida"
+          },
+          "observaciones": {
+            "type": "string",
+            "maxLength": 3000,
+            "title": "Observaciones",
+            "default": ""
+          },
+          "gastos_previstos": {
+            "items": {
+              "$ref": "#/components/schemas/ExpectedExpense"
+            },
+            "type": "array",
+            "maxItems": 100,
+            "title": "Gastos Previstos"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "numero",
+          "fecha",
+          "chofer_id",
+          "equipo_id",
+          "origen",
+          "destino",
+          "moneda_id",
+          "km_salida"
+        ],
+        "title": "Trip"
+      },
+      "Usuario": {
+        "properties": {
+          "usuario": {
+            "type": "string",
+            "maxLength": 60,
+            "minLength": 1,
+            "title": "Usuario"
+          },
+          "password": {
+            "type": "string",
+            "maxLength": 256,
+            "minLength": 1,
+            "title": "Password"
+          },
+          "nombre": {
+            "type": "string",
+            "maxLength": 100,
+            "minLength": 1,
+            "title": "Nombre"
+          },
+          "rol": {
+            "type": "string",
+            "pattern": "^(admin|operador|consulta|logistica)$",
+            "title": "Rol"
+          },
+          "empresas": {
+            "items": {
+              "type": "integer"
+            },
+            "type": "array",
+            "maxItems": 100,
+            "minItems": 1,
+            "title": "Empresas"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "usuario",
+          "password",
+          "nombre",
+          "rol",
+          "empresas"
+        ],
+        "title": "Usuario"
+      },
+      "ValidationError": {
+        "properties": {
+          "loc": {
+            "items": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "integer"
+                }
+              ]
+            },
+            "type": "array",
+            "title": "Location"
+          },
+          "msg": {
+            "type": "string",
+            "title": "Message"
+          },
+          "type": {
+            "type": "string",
+            "title": "Error Type"
+          },
+          "input": {
+            "title": "Input"
+          },
+          "ctx": {
+            "type": "object",
+            "title": "Context"
+          }
+        },
+        "type": "object",
+        "required": [
+          "loc",
+          "msg",
+          "type"
+        ],
+        "title": "ValidationError"
+      },
+      "Version": {
+        "properties": {
+          "version": {
+            "type": "integer",
+            "exclusiveMinimum": 0.0,
+            "title": "Version"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "version"
+        ],
+        "title": "Version"
+      }
+    },
+    "securitySchemes": {
+      "BearerAuth": {
+        "type": "http",
+        "scheme": "bearer",
+        "description": "Clave API individual asociada a un tenant"
+      }
+    }
+  },
+  "x-recursos": {
+    "clientes": {
+      "titulo": "Clientes",
+      "singular": "Cliente",
+      "area": "Maestros",
+      "fuente": "clientes",
+      "campos": {
+        "codigo": {
+          "nombre": "Código",
+          "tipo": "texto",
+          "requerido": true,
+          "max": 30
+        },
+        "nombre": {
+          "nombre": "Nombre / razón social",
+          "tipo": "texto",
+          "requerido": true,
+          "max": 120
+        },
+        "identificacion": {
+          "nombre": "CUIT / identificación",
+          "tipo": "texto",
+          "max": 30
+        },
+        "direccion": {
+          "nombre": "Dirección",
+          "tipo": "texto",
+          "max": 180
+        },
+        "ciudad": {
+          "nombre": "Ciudad",
+          "tipo": "texto",
+          "max": 100
+        },
+        "pais": {
+          "nombre": "País",
+          "tipo": "texto",
+          "max": 80
+        },
+        "telefono": {
+          "nombre": "Teléfono",
+          "tipo": "texto",
+          "max": 40
+        },
+        "email": {
+          "nombre": "Correo electrónico",
+          "tipo": "email",
+          "max": 120
+        },
+        "observaciones": {
+          "nombre": "Observaciones",
+          "tipo": "area",
+          "max": 2000
+        },
+        "impuesto_id": {
+          "nombre": "Condición impositiva",
+          "tipo": "referencia",
+          "recurso": "impuestos"
+        },
+        "condicion_id": {
+          "nombre": "Condición de venta",
+          "tipo": "referencia",
+          "recurso": "condiciones"
+        }
+      },
+      "columnas": [
+        "codigo",
+        "nombre",
+        "identificacion",
+        "pais"
+      ],
+      "unicos": [
+        "codigo"
+      ]
+    },
+    "proveedores": {
+      "titulo": "Proveedores",
+      "singular": "Proveedor",
+      "area": "Maestros",
+      "fuente": "proveedores",
+      "campos": {
+        "codigo": {
+          "nombre": "Código",
+          "tipo": "texto",
+          "requerido": true,
+          "max": 30
+        },
+        "nombre": {
+          "nombre": "Nombre / razón social",
+          "tipo": "texto",
+          "requerido": true,
+          "max": 120
+        },
+        "identificacion": {
+          "nombre": "CUIT / identificación",
+          "tipo": "texto",
+          "max": 30
+        },
+        "direccion": {
+          "nombre": "Dirección",
+          "tipo": "texto",
+          "max": 180
+        },
+        "ciudad": {
+          "nombre": "Ciudad",
+          "tipo": "texto",
+          "max": 100
+        },
+        "pais": {
+          "nombre": "País",
+          "tipo": "texto",
+          "max": 80
+        },
+        "telefono": {
+          "nombre": "Teléfono",
+          "tipo": "texto",
+          "max": 40
+        },
+        "email": {
+          "nombre": "Correo electrónico",
+          "tipo": "email",
+          "max": 120
+        },
+        "observaciones": {
+          "nombre": "Observaciones",
+          "tipo": "area",
+          "max": 2000
+        }
+      },
+      "columnas": [
+        "codigo",
+        "nombre",
+        "identificacion",
+        "pais"
+      ],
+      "unicos": [
+        "codigo"
+      ]
+    },
+    "propietarios": {
+      "titulo": "Propietarios",
+      "singular": "Propietario",
+      "area": "Maestros",
+      "fuente": "propietarios",
+      "campos": {
+        "codigo": {
+          "nombre": "Código",
+          "tipo": "texto",
+          "requerido": true,
+          "max": 30
+        },
+        "nombre": {
+          "nombre": "Nombre / razón social",
+          "tipo": "texto",
+          "requerido": true,
+          "max": 120
+        },
+        "identificacion": {
+          "nombre": "CUIT / identificación",
+          "tipo": "texto",
+          "max": 30
+        },
+        "direccion": {
+          "nombre": "Dirección",
+          "tipo": "texto",
+          "max": 180
+        },
+        "ciudad": {
+          "nombre": "Ciudad",
+          "tipo": "texto",
+          "max": 100
+        },
+        "pais": {
+          "nombre": "País",
+          "tipo": "texto",
+          "max": 80
+        },
+        "telefono": {
+          "nombre": "Teléfono",
+          "tipo": "texto",
+          "max": 40
+        },
+        "email": {
+          "nombre": "Correo electrónico",
+          "tipo": "email",
+          "max": 120
+        },
+        "observaciones": {
+          "nombre": "Observaciones",
+          "tipo": "area",
+          "max": 2000
+        },
+        "permiso_origen": {
+          "nombre": "Permiso · origen",
+          "tipo": "texto",
+          "max": 80
+        },
+        "permiso_complementario": {
+          "nombre": "Permiso · complementario",
+          "tipo": "texto",
+          "max": 80
+        },
+        "permiso_vencimiento": {
+          "nombre": "Permiso · vencimiento",
+          "tipo": "fecha"
+        },
+        "poliza_numero": {
+          "nombre": "Número de póliza",
+          "tipo": "texto",
+          "max": 40
+        },
+        "poliza_compania": {
+          "nombre": "Compañía de seguro",
+          "tipo": "texto",
+          "max": 80
+        },
+        "poliza_vencimiento": {
+          "nombre": "Vencimiento de póliza",
+          "tipo": "fecha"
+        }
+      },
+      "columnas": [
+        "codigo",
+        "nombre",
+        "identificacion",
+        "pais"
+      ],
+      "unicos": [
+        "codigo"
+      ]
+    },
+    "empresas": {
+      "titulo": "Transportistas",
+      "singular": "Transportista",
+      "area": "Maestros",
+      "fuente": "empresas",
+      "campos": {
+        "codigo": {
+          "nombre": "Código",
+          "tipo": "texto",
+          "requerido": true,
+          "max": 30
+        },
+        "nombre": {
+          "nombre": "Nombre / razón social",
+          "tipo": "texto",
+          "requerido": true,
+          "max": 120
+        },
+        "identificacion": {
+          "nombre": "CUIT / identificación",
+          "tipo": "texto",
+          "max": 30
+        },
+        "direccion": {
+          "nombre": "Dirección",
+          "tipo": "texto",
+          "max": 180
+        },
+        "ciudad": {
+          "nombre": "Ciudad",
+          "tipo": "texto",
+          "max": 100
+        },
+        "pais": {
+          "nombre": "País",
+          "tipo": "texto",
+          "max": 80
+        },
+        "telefono": {
+          "nombre": "Teléfono",
+          "tipo": "texto",
+          "max": 40
+        },
+        "email": {
+          "nombre": "Correo electrónico",
+          "tipo": "email",
+          "max": 120
+        },
+        "observaciones": {
+          "nombre": "Observaciones",
+          "tipo": "area",
+          "max": 2000
+        },
+        "permiso": {
+          "nombre": "Permiso internacional",
+          "tipo": "texto",
+          "max": 80
+        },
+        "permiso_origen_1": {
+          "nombre": "Permiso 1 · origen",
+          "tipo": "texto",
+          "max": 80
+        },
+        "permiso_complementario_1": {
+          "nombre": "Permiso 1 · complementario",
+          "tipo": "texto",
+          "max": 80
+        },
+        "permiso_vencimiento_1": {
+          "nombre": "Permiso 1 · vencimiento",
+          "tipo": "fecha"
+        },
+        "permiso_origen_2": {
+          "nombre": "Permiso 2 · origen",
+          "tipo": "texto",
+          "max": 80
+        },
+        "permiso_complementario_2": {
+          "nombre": "Permiso 2 · complementario",
+          "tipo": "texto",
+          "max": 80
+        },
+        "permiso_vencimiento_2": {
+          "nombre": "Permiso 2 · vencimiento",
+          "tipo": "fecha"
+        }
+      },
+      "columnas": [
+        "codigo",
+        "nombre",
+        "identificacion",
+        "pais"
+      ],
+      "unicos": [
+        "codigo"
+      ]
+    },
+    "choferes": {
+      "titulo": "Choferes",
+      "singular": "Chofer",
+      "area": "Maestros",
+      "fuente": "choferes",
+      "campos": {
+        "codigo": {
+          "nombre": "Código",
+          "tipo": "texto",
+          "requerido": true,
+          "max": 30
+        },
+        "nombre": {
+          "nombre": "Nombre completo",
+          "tipo": "texto",
+          "requerido": true,
+          "max": 120
+        },
+        "documento": {
+          "nombre": "Documento",
+          "tipo": "texto",
+          "max": 40
+        },
+        "licencia": {
+          "nombre": "Licencia",
+          "tipo": "texto",
+          "max": 50
+        },
+        "vencimiento": {
+          "nombre": "Vencimiento de licencia",
+          "tipo": "fecha"
+        },
+        "telefono": {
+          "nombre": "Teléfono",
+          "tipo": "texto",
+          "max": 40
+        },
+        "direccion": {
+          "nombre": "Dirección",
+          "tipo": "texto",
+          "max": 180
+        },
+        "pais": {
+          "nombre": "País",
+          "tipo": "texto",
+          "max": 80
+        }
+      },
+      "columnas": [
+        "codigo",
+        "nombre",
+        "licencia",
+        "vencimiento"
+      ],
+      "unicos": [
+        "codigo"
+      ]
+    },
+    "equipos": {
+      "titulo": "Equipos",
+      "singular": "Equipo",
+      "area": "Maestros",
+      "fuente": "equipos",
+      "campos": {
+        "patente": {
+          "nombre": "Patente",
+          "tipo": "texto",
+          "requerido": true,
+          "max": 20
+        },
+        "tipo": {
+          "nombre": "Tipo",
+          "tipo": "opcion",
+          "opciones": [
+            "Tractor",
+            "Semirremolque",
+            "Camión",
+            "Remolque"
+          ],
+          "requerido": true
+        },
+        "marca": {
+          "nombre": "Marca",
+          "tipo": "texto",
+          "max": 60
+        },
+        "modelo": {
+          "nombre": "Modelo",
+          "tipo": "texto",
+          "max": 60
+        },
+        "anio": {
+          "nombre": "Año",
+          "tipo": "entero",
+          "min": 1900,
+          "max": 2200
+        },
+        "motor": {
+          "nombre": "Número de motor",
+          "tipo": "texto",
+          "max": 40
+        },
+        "chasis": {
+          "nombre": "Número de chasis",
+          "tipo": "texto",
+          "max": 40
+        },
+        "capacidad": {
+          "nombre": "Capacidad de arrastre (t)",
+          "tipo": "texto",
+          "max": 30
+        },
+        "poliza_numero": {
+          "nombre": "Número de póliza",
+          "tipo": "texto",
+          "max": 40
+        },
+        "poliza_compania": {
+          "nombre": "Compañía de seguro",
+          "tipo": "texto",
+          "max": 80
+        },
+        "poliza_vencimiento": {
+          "nombre": "Vencimiento de póliza",
+          "tipo": "fecha"
+        },
+        "permiso_origen": {
+          "nombre": "Permiso · origen",
+          "tipo": "texto",
+          "max": 80
+        },
+        "permiso_complementario": {
+          "nombre": "Permiso · complementario",
+          "tipo": "texto",
+          "max": 80
+        },
+        "permiso_vencimiento": {
+          "nombre": "Permiso · vencimiento",
+          "tipo": "fecha"
+        },
+        "propietario_id": {
+          "nombre": "Propietario",
+          "tipo": "referencia",
+          "recurso": "propietarios"
+        },
+        "vencimiento": {
+          "nombre": "Vencimiento de revisión",
+          "tipo": "fecha"
+        },
+        "observaciones": {
+          "nombre": "Observaciones",
+          "tipo": "area",
+          "max": 2000
+        }
+      },
+      "columnas": [
+        "patente",
+        "tipo",
+        "marca",
+        "vencimiento"
+      ],
+      "unicos": [
+        "patente"
+      ]
+    },
+    "distancias": {
+      "titulo": "Distancias",
+      "singular": "Distancia",
+      "area": "Maestros",
+      "fuente": "distancias",
+      "campos": {
+        "origen": {
+          "nombre": "Origen",
+          "tipo": "texto",
+          "requerido": true,
+          "max": 120
+        },
+        "destino": {
+          "nombre": "Destino",
+          "tipo": "texto",
+          "requerido": true,
+          "max": 120
+        },
+        "kilometros": {
+          "nombre": "Kilómetros",
+          "tipo": "entero",
+          "min": 0,
+          "max": 100000,
+          "requerido": true
+        }
+      },
+      "columnas": [
+        "origen",
+        "destino",
+        "kilometros"
+      ]
+    },
+    "monedas": {
+      "titulo": "Monedas",
+      "singular": "Moneda",
+      "area": "Configuración",
+      "fuente": "tablas",
+      "campos": {
+        "codigo": {
+          "nombre": "Código (ARS, USD, CLP...)",
+          "tipo": "texto",
+          "requerido": true,
+          "max": 8
+        },
+        "nombre": {
+          "nombre": "Nombre",
+          "tipo": "texto",
+          "requerido": true,
+          "max": 60
+        }
+      },
+      "columnas": [
+        "codigo",
+        "nombre"
+      ],
+      "unicos": [
+        "codigo"
+      ]
+    },
+    "impuestos": {
+      "titulo": "Condiciones impositivas",
+      "singular": "Condición impositiva",
+      "area": "Configuración",
+      "fuente": "tablas",
+      "campos": {
+        "codigo": {
+          "nombre": "Código",
+          "tipo": "texto",
+          "requerido": true,
+          "max": 20
+        },
+        "nombre": {
+          "nombre": "Descripción",
+          "tipo": "texto",
+          "requerido": true,
+          "max": 120
+        },
+        "porcentaje_1": {
+          "nombre": "Porcentaje 1",
+          "tipo": "decimal",
+          "decimales": 3,
+          "min": 0,
+          "max": 100,
+          "defecto": "0"
+        },
+        "porcentaje_2": {
+          "nombre": "Porcentaje 2",
+          "tipo": "decimal",
+          "decimales": 3,
+          "min": 0,
+          "max": 100,
+          "defecto": "0"
+        },
+        "porcentaje_3": {
+          "nombre": "Porcentaje 3",
+          "tipo": "decimal",
+          "decimales": 3,
+          "min": 0,
+          "max": 100,
+          "defecto": "0"
+        },
+        "letras": {
+          "nombre": "Letras permitidas (ej. ABE)",
+          "tipo": "texto",
+          "requerido": true,
+          "max": 4,
+          "defecto": "ABE"
+        }
+      },
+      "columnas": [
+        "codigo",
+        "nombre",
+        "porcentaje_1",
+        "porcentaje_2",
+        "porcentaje_3",
+        "letras"
+      ],
+      "unicos": [
+        "codigo"
+      ]
+    },
+    "condiciones": {
+      "titulo": "Condiciones de venta",
+      "singular": "Condición de venta",
+      "area": "Configuración",
+      "fuente": "tablas",
+      "campos": {
+        "codigo": {
+          "nombre": "Código",
+          "tipo": "texto",
+          "requerido": true,
+          "max": 20
+        },
+        "nombre": {
+          "nombre": "Descripción",
+          "tipo": "texto",
+          "requerido": true,
+          "max": 100
+        },
+        "dias": {
+          "nombre": "Plazo en días (0 = contado)",
+          "tipo": "entero",
+          "requerido": true,
+          "min": 0,
+          "max": 730
+        }
+      },
+      "columnas": [
+        "codigo",
+        "nombre",
+        "dias"
+      ],
+      "unicos": [
+        "codigo"
+      ]
+    },
+    "cotizaciones": {
+      "titulo": "Cotizaciones",
+      "singular": "Cotización",
+      "area": "Configuración",
+      "fuente": "cotiza",
+      "campos": {
+        "fecha": {
+          "nombre": "Fecha",
+          "tipo": "fecha",
+          "requerido": true
+        },
+        "moneda_id": {
+          "nombre": "Moneda",
+          "tipo": "referencia",
+          "recurso": "monedas",
+          "requerido": true
+        },
+        "valor": {
+          "nombre": "Unidades de moneda base por unidad",
+          "tipo": "decimal",
+          "decimales": 6,
+          "min": "0.000001",
+          "max": 10000000,
+          "requerido": true
+        }
+      },
+      "columnas": [
+        "fecha",
+        "moneda_id",
+        "valor"
+      ],
+      "unicos_compuestos": [
+        [
+          "fecha",
+          "moneda_id"
+        ]
+      ]
+    },
+    "crt": {
+      "titulo": "Cartas de porte · CRT",
+      "singular": "CRT",
+      "area": "Operaciones",
+      "fuente": "crt",
+      "campos": {
+        "numero": {
+          "nombre": "Número",
+          "tipo": "texto",
+          "requerido": true,
+          "max": 40
+        },
+        "fecha": {
+          "nombre": "Fecha",
+          "tipo": "fecha",
+          "requerido": true
+        },
+        "cliente_id": {
+          "nombre": "Cliente a facturar",
+          "tipo": "referencia",
+          "recurso": "clientes",
+          "requerido": true
+        },
+        "porteador_id": {
+          "nombre": "Porteador",
+          "tipo": "referencia",
+          "recurso": "empresas"
+        },
+        "transportista_id": {
+          "nombre": "Transportista operativo",
+          "tipo": "referencia",
+          "recurso": "empresas"
+        },
+        "remitente_id": {
+          "nombre": "Remitente",
+          "tipo": "referencia",
+          "recurso": "clientes"
+        },
+        "destinatario_id": {
+          "nombre": "Destinatario",
+          "tipo": "referencia",
+          "recurso": "clientes"
+        },
+        "consignatario_id": {
+          "nombre": "Consignatario",
+          "tipo": "referencia",
+          "recurso": "clientes"
+        },
+        "notificar_id": {
+          "nombre": "Notificar a",
+          "tipo": "referencia",
+          "recurso": "clientes"
+        },
+        "origen": {
+          "nombre": "Lugar de origen",
+          "tipo": "texto",
+          "requerido": true,
+          "max": 180
+        },
+        "destino": {
+          "nombre": "Lugar de entrega",
+          "tipo": "texto",
+          "requerido": true,
+          "max": 180
+        },
+        "mercaderia": {
+          "nombre": "Descripción de la mercadería",
+          "tipo": "area",
+          "max": 5000
+        },
+        "bultos": {
+          "nombre": "Bultos",
+          "tipo": "entero",
+          "min": 0,
+          "max": 9999999,
+          "defecto": 0
+        },
+        "peso_bruto": {
+          "nombre": "Peso bruto (kg)",
+          "tipo": "decimal",
+          "decimales": 3,
+          "min": 0,
+          "max": 99999999,
+          "defecto": "0"
+        },
+        "peso_neto": {
+          "nombre": "Peso neto (kg)",
+          "tipo": "decimal",
+          "decimales": 3,
+          "min": 0,
+          "max": 99999999,
+          "defecto": "0"
+        },
+        "volumen": {
+          "nombre": "Volumen (m³)",
+          "tipo": "decimal",
+          "decimales": 2,
+          "min": 0,
+          "max": 999999,
+          "defecto": "0"
+        },
+        "moneda_id": {
+          "nombre": "Moneda del flete",
+          "tipo": "referencia",
+          "recurso": "monedas",
+          "requerido": true
+        },
+        "importe": {
+          "nombre": "Importe neto del flete",
+          "tipo": "decimal",
+          "min": 0,
+          "max": 999999999,
+          "decimales": 2,
+          "requerido": true
+        },
+        "letra": {
+          "nombre": "Letra",
+          "tipo": "opcion",
+          "opciones": [
+            "A",
+            "B",
+            "C",
+            "E"
+          ],
+          "requerido": true
+        },
+        "impuesto_id": {
+          "nombre": "Condición impositiva",
+          "tipo": "referencia",
+          "recurso": "impuestos",
+          "requerido": true
+        },
+        "condicion_id": {
+          "nombre": "Condición de venta",
+          "tipo": "referencia",
+          "recurso": "condiciones",
+          "requerido": true
+        },
+        "facturable": {
+          "nombre": "Emitir factura",
+          "tipo": "booleano",
+          "defecto": true
+        },
+        "aplica_impuestos": {
+          "nombre": "Aplicar impuestos",
+          "tipo": "booleano",
+          "defecto": true
+        },
+        "observaciones": {
+          "nombre": "Observaciones / instrucciones",
+          "tipo": "area",
+          "max": 5000
+        },
+        "lugar_recepcion": {
+          "nombre": "Lugar donde el porteador recibe la mercadería",
+          "tipo": "area",
+          "max": 1000
+        },
+        "porteadores_sucesivos": {
+          "nombre": "Porteadores sucesivos",
+          "tipo": "area",
+          "max": 2000
+        },
+        "valor_mercaderia": {
+          "nombre": "Valor declarado de la mercadería",
+          "tipo": "decimal",
+          "decimales": 2,
+          "min": 0,
+          "max": 999999999
+        },
+        "detalle_valor": {
+          "nombre": "Detalle del valor de la mercadería",
+          "tipo": "area",
+          "max": 2000
+        },
+        "detalle_flete": {
+          "nombre": "Detalle de gastos y flete",
+          "tipo": "area",
+          "max": 2000
+        },
+        "documentos_anexos": {
+          "nombre": "Documentos anexos",
+          "tipo": "area",
+          "max": 3000
+        },
+        "instrucciones_aduana": {
+          "nombre": "Instrucciones sobre formalidades de aduana",
+          "tipo": "area",
+          "max": 3000
+        },
+        "declaraciones": {
+          "nombre": "Declaraciones y observaciones",
+          "tipo": "area",
+          "max": 5000
+        },
+        "flete_externo": {
+          "nombre": "Monto del flete externo",
+          "tipo": "texto",
+          "max": 100
+        },
+        "reembolso": {
+          "nombre": "Monto de reembolso contra entrega",
+          "tipo": "texto",
+          "max": 100
+        },
+        "seguro": {
+          "nombre": "Seguro",
+          "tipo": "decimal",
+          "decimales": 2,
+          "min": 0,
+          "max": 999999999
+        },
+        "moneda_valor_id": {
+          "nombre": "Moneda del valor",
+          "tipo": "referencia",
+          "recurso": "monedas"
+        },
+        "complemento_valor": {
+          "nombre": "Complemento del valor",
+          "tipo": "texto",
+          "max": 250
+        },
+        "declaracion_valor_detalle": {
+          "nombre": "Detalle de la declaración de valor",
+          "tipo": "texto",
+          "max": 250
+        },
+        "lugar_pago_flete": {
+          "nombre": "Lugar de pago del flete (1 remitente, 2 destinatario, 3 ambos)",
+          "tipo": "entero",
+          "min": 1,
+          "max": 3
+        },
+        "tipo_flete": {
+          "nombre": "Tipo de flete",
+          "tipo": "texto",
+          "max": 120
+        },
+        "valor_1": {
+          "nombre": "Valor 1",
+          "tipo": "decimal",
+          "decimales": 2,
+          "min": 0,
+          "max": 999999999
+        },
+        "valor_2": {
+          "nombre": "Valor 2",
+          "tipo": "decimal",
+          "decimales": 2,
+          "min": 0,
+          "max": 999999999
+        },
+        "valor_3": {
+          "nombre": "Valor 3",
+          "tipo": "decimal",
+          "decimales": 2,
+          "min": 0,
+          "max": 999999999
+        },
+        "valor_4": {
+          "nombre": "Valor 4",
+          "tipo": "decimal",
+          "decimales": 2,
+          "min": 0,
+          "max": 999999999
+        },
+        "valor_descripcion_1": {
+          "nombre": "Descripción del valor 1",
+          "tipo": "texto",
+          "max": 120
+        },
+        "valor_descripcion_2": {
+          "nombre": "Descripción del valor 2",
+          "tipo": "texto",
+          "max": 120
+        },
+        "valor_descripcion_3": {
+          "nombre": "Descripción del valor 3",
+          "tipo": "texto",
+          "max": 120
+        },
+        "valor_descripcion_4": {
+          "nombre": "Descripción del valor 4",
+          "tipo": "texto",
+          "max": 120
+        },
+        "flete_1": {
+          "nombre": "Tramo de flete 1",
+          "tipo": "decimal",
+          "decimales": 2,
+          "min": 0,
+          "max": 999999999
+        },
+        "flete_2": {
+          "nombre": "Tramo de flete 2",
+          "tipo": "decimal",
+          "decimales": 2,
+          "min": 0,
+          "max": 999999999
+        },
+        "flete_3": {
+          "nombre": "Tramo de flete 3",
+          "tipo": "decimal",
+          "decimales": 2,
+          "min": 0,
+          "max": 999999999
+        },
+        "flete_descripcion_1": {
+          "nombre": "Descripción del flete 1",
+          "tipo": "texto",
+          "max": 120
+        },
+        "flete_descripcion_2": {
+          "nombre": "Descripción del flete 2",
+          "tipo": "texto",
+          "max": 120
+        },
+        "flete_descripcion_3": {
+          "nombre": "Descripción del flete 3",
+          "tipo": "texto",
+          "max": 120
+        }
+      },
+      "columnas": [
+        "numero",
+        "fecha",
+        "cliente_id",
+        "origen",
+        "destino",
+        "estado"
+      ],
+      "unicos": [
+        "numero"
+      ],
+      "calculados": [
+        "estado",
+        "comprobante_id"
+      ]
+    },
+    "mic": {
+      "titulo": "Manifiestos · MIC",
+      "singular": "MIC",
+      "area": "Operaciones",
+      "fuente": "mic",
+      "campos": {
+        "numero": {
+          "nombre": "Número",
+          "tipo": "texto",
+          "requerido": true,
+          "max": 40
+        },
+        "fecha": {
+          "nombre": "Fecha",
+          "tipo": "fecha",
+          "requerido": true
+        },
+        "cliente_id": {
+          "nombre": "Cliente a facturar",
+          "tipo": "referencia",
+          "recurso": "clientes",
+          "requerido": true
+        },
+        "porteador_id": {
+          "nombre": "Porteador",
+          "tipo": "referencia",
+          "recurso": "empresas"
+        },
+        "transportista_id": {
+          "nombre": "Transportista operativo",
+          "tipo": "referencia",
+          "recurso": "empresas"
+        },
+        "remitente_id": {
+          "nombre": "Remitente",
+          "tipo": "referencia",
+          "recurso": "clientes"
+        },
+        "destinatario_id": {
+          "nombre": "Destinatario",
+          "tipo": "referencia",
+          "recurso": "clientes"
+        },
+        "consignatario_id": {
+          "nombre": "Consignatario",
+          "tipo": "referencia",
+          "recurso": "clientes"
+        },
+        "notificar_id": {
+          "nombre": "Notificar a",
+          "tipo": "referencia",
+          "recurso": "clientes"
+        },
+        "origen": {
+          "nombre": "Lugar de origen",
+          "tipo": "texto",
+          "requerido": true,
+          "max": 180
+        },
+        "destino": {
+          "nombre": "Lugar de entrega",
+          "tipo": "texto",
+          "requerido": true,
+          "max": 180
+        },
+        "mercaderia": {
+          "nombre": "Descripción de la mercadería",
+          "tipo": "area",
+          "max": 5000
+        },
+        "bultos": {
+          "nombre": "Bultos",
+          "tipo": "entero",
+          "min": 0,
+          "max": 9999999,
+          "defecto": 0
+        },
+        "peso_bruto": {
+          "nombre": "Peso bruto (kg)",
+          "tipo": "decimal",
+          "decimales": 3,
+          "min": 0,
+          "max": 99999999,
+          "defecto": "0"
+        },
+        "peso_neto": {
+          "nombre": "Peso neto (kg)",
+          "tipo": "decimal",
+          "decimales": 3,
+          "min": 0,
+          "max": 99999999,
+          "defecto": "0"
+        },
+        "volumen": {
+          "nombre": "Volumen (m³)",
+          "tipo": "decimal",
+          "decimales": 2,
+          "min": 0,
+          "max": 999999,
+          "defecto": "0"
+        },
+        "moneda_id": {
+          "nombre": "Moneda del flete",
+          "tipo": "referencia",
+          "recurso": "monedas",
+          "requerido": true
+        },
+        "importe": {
+          "nombre": "Importe neto del flete",
+          "tipo": "decimal",
+          "min": 0,
+          "max": 999999999,
+          "decimales": 2,
+          "requerido": true
+        },
+        "letra": {
+          "nombre": "Letra",
+          "tipo": "opcion",
+          "opciones": [
+            "A",
+            "B",
+            "C",
+            "E"
+          ],
+          "requerido": true
+        },
+        "impuesto_id": {
+          "nombre": "Condición impositiva",
+          "tipo": "referencia",
+          "recurso": "impuestos",
+          "requerido": true
+        },
+        "condicion_id": {
+          "nombre": "Condición de venta",
+          "tipo": "referencia",
+          "recurso": "condiciones",
+          "requerido": true
+        },
+        "facturable": {
+          "nombre": "Emitir factura",
+          "tipo": "booleano",
+          "defecto": true
+        },
+        "aplica_impuestos": {
+          "nombre": "Aplicar impuestos",
+          "tipo": "booleano",
+          "defecto": true
+        },
+        "observaciones": {
+          "nombre": "Observaciones / instrucciones",
+          "tipo": "area",
+          "max": 5000
+        },
+        "chofer_id": {
+          "nombre": "Chofer",
+          "tipo": "referencia",
+          "recurso": "choferes",
+          "requerido": true
+        },
+        "equipo_id": {
+          "nombre": "Tractor",
+          "tipo": "referencia",
+          "recurso": "equipos",
+          "requerido": true
+        },
+        "semi_id": {
+          "nombre": "Semirremolque",
+          "tipo": "referencia",
+          "recurso": "equipos"
+        },
+        "permiso": {
+          "nombre": "Permiso",
+          "tipo": "texto",
+          "max": 80
+        },
+        "aduana_origen": {
+          "nombre": "Aduana de partida",
+          "tipo": "texto",
+          "max": 120
+        },
+        "aduana_destino": {
+          "nombre": "Aduana de destino",
+          "tipo": "texto",
+          "max": 120
+        },
+        "precintos": {
+          "nombre": "Precintos",
+          "tipo": "area",
+          "max": 2000
+        },
+        "transito_aduanero": {
+          "nombre": "Tránsito aduanero",
+          "tipo": "booleano",
+          "defecto": true
+        },
+        "equipo_sustituto_id": {
+          "nombre": "Camión sustituto",
+          "tipo": "referencia",
+          "recurso": "equipos"
+        },
+        "semi_sustituto_id": {
+          "nombre": "Semirremolque sustituto",
+          "tipo": "referencia",
+          "recurso": "equipos"
+        },
+        "valor_fot": {
+          "nombre": "Valor FOT",
+          "tipo": "decimal",
+          "decimales": 2,
+          "min": 0,
+          "max": 999999999
+        },
+        "seguro": {
+          "nombre": "Seguro",
+          "tipo": "decimal",
+          "decimales": 2,
+          "min": 0,
+          "max": 999999999
+        },
+        "tipo_bultos": {
+          "nombre": "Tipo de bultos",
+          "tipo": "texto",
+          "max": 100
+        },
+        "documentos_anexos": {
+          "nombre": "Documentos anexos",
+          "tipo": "area",
+          "max": 3000
+        },
+        "ruta_plazo": {
+          "nombre": "Nº DTA, ruta y plazo de transporte",
+          "tipo": "area",
+          "max": 3000
+        },
+        "fuente_permisos": {
+          "nombre": "Fuente de permisos/seguros ARTRANS (0–4)",
+          "tipo": "entero",
+          "min": 0,
+          "max": 4,
+          "defecto": 0
+        }
+      },
+      "columnas": [
+        "numero",
+        "fecha",
+        "cliente_id",
+        "origen",
+        "destino",
+        "estado"
+      ],
+      "unicos": [
+        "numero"
+      ],
+      "calculados": [
+        "estado",
+        "comprobante_id"
+      ]
+    },
+    "mic_hojas": {
+      "titulo": "Hojas MIC/DTA",
+      "singular": "Hoja MIC/DTA",
+      "area": "Operaciones",
+      "fuente": "mic",
+      "campos": {
+        "mic_id": {
+          "nombre": "MIC/DTA",
+          "tipo": "referencia",
+          "recurso": "mic",
+          "requerido": true
+        },
+        "hoja": {
+          "nombre": "Hoja",
+          "tipo": "entero",
+          "requerido": true,
+          "min": 1,
+          "max": 999
+        },
+        "crt_id": {
+          "nombre": "CRT",
+          "tipo": "referencia",
+          "recurso": "crt",
+          "requerido": true
+        }
+      },
+      "columnas": [
+        "mic_id",
+        "hoja",
+        "crt_id"
+      ],
+      "servicio": true,
+      "oculto": true
+    },
+    "hojas_ruta": {
+      "titulo": "Hojas de ruta",
+      "singular": "Hoja de ruta",
+      "area": "Operaciones",
+      "fuente": "hojaruta",
+      "campos": {
+        "numero": {
+          "nombre": "Número",
+          "tipo": "texto",
+          "requerido": true,
+          "max": 40
+        },
+        "fecha": {
+          "nombre": "Fecha",
+          "tipo": "fecha",
+          "requerido": true
+        },
+        "chofer_id": {
+          "nombre": "Chofer",
+          "tipo": "referencia",
+          "recurso": "choferes",
+          "requerido": true
+        },
+        "equipo_id": {
+          "nombre": "Equipo",
+          "tipo": "referencia",
+          "recurso": "equipos",
+          "requerido": true
+        },
+        "mic_id": {
+          "nombre": "MIC asociado",
+          "tipo": "referencia",
+          "recurso": "mic"
+        },
+        "rendicion_id": {
+          "nombre": "Rendición asociada",
+          "tipo": "referencia",
+          "recurso": "rendiciones"
+        },
+        "origen": {
+          "nombre": "Origen",
+          "tipo": "texto",
+          "requerido": true,
+          "max": 180
+        },
+        "destino": {
+          "nombre": "Destino",
+          "tipo": "texto",
+          "requerido": true,
+          "max": 180
+        },
+        "kilometros": {
+          "nombre": "Kilómetros previstos",
+          "tipo": "entero",
+          "min": 0,
+          "max": 100000,
+          "defecto": 0
+        },
+        "estado": {
+          "nombre": "Estado",
+          "tipo": "opcion",
+          "opciones": [
+            "Programada",
+            "En viaje",
+            "Finalizada"
+          ],
+          "defecto": "Programada"
+        },
+        "observaciones": {
+          "nombre": "Observaciones",
+          "tipo": "area",
+          "max": 3000
+        }
+      },
+      "columnas": [
+        "numero",
+        "fecha",
+        "chofer_id",
+        "origen",
+        "destino",
+        "estado"
+      ],
+      "unicos": [
+        "numero",
+        "rendicion_id"
+      ]
+    },
+    "desgloses": {
+      "titulo": "Desgloses de CRT",
+      "singular": "Desglose",
+      "area": "Operaciones",
+      "fuente": "kardex",
+      "campos": {
+        "crt_id": {
+          "nombre": "CRT",
+          "tipo": "referencia",
+          "recurso": "crt",
+          "requerido": true
+        },
+        "cliente_id": {
+          "nombre": "Cliente",
+          "tipo": "referencia",
+          "recurso": "clientes",
+          "requerido": true
+        },
+        "detalle": {
+          "nombre": "Detalle",
+          "tipo": "texto",
+          "requerido": true,
+          "max": 200
+        },
+        "importe": {
+          "nombre": "Importe neto",
+          "tipo": "decimal",
+          "decimales": 2,
+          "min": "0.01",
+          "max": 999999999,
+          "requerido": true
+        }
+      },
+      "columnas": [
+        "crt_id",
+        "cliente_id",
+        "detalle",
+        "importe"
+      ]
+    },
+    "rendiciones": {
+      "titulo": "Rendiciones de viaje",
+      "singular": "Rendición",
+      "area": "Flota",
+      "fuente": "rendiciones",
+      "campos": {
+        "numero": {
+          "nombre": "Número",
+          "tipo": "texto",
+          "requerido": true,
+          "max": 40
+        },
+        "fecha": {
+          "nombre": "Fecha",
+          "tipo": "fecha",
+          "requerido": true
+        },
+        "chofer_id": {
+          "nombre": "Chofer",
+          "tipo": "referencia",
+          "recurso": "choferes",
+          "requerido": true
+        },
+        "equipo_id": {
+          "nombre": "Equipo",
+          "tipo": "referencia",
+          "recurso": "equipos",
+          "requerido": true
+        },
+        "cliente_id": {
+          "nombre": "Cliente",
+          "tipo": "referencia",
+          "recurso": "clientes"
+        },
+        "salida": {
+          "nombre": "Salida",
+          "tipo": "fecha",
+          "requerido": true
+        },
+        "regreso": {
+          "nombre": "Regreso",
+          "tipo": "fecha"
+        },
+        "km_salida": {
+          "nombre": "Odómetro de salida",
+          "tipo": "entero",
+          "min": 0,
+          "max": 99999999,
+          "requerido": true
+        },
+        "km_regreso": {
+          "nombre": "Odómetro de regreso",
+          "tipo": "entero",
+          "min": 0,
+          "max": 99999999
+        },
+        "moneda_id": {
+          "nombre": "Moneda",
+          "tipo": "referencia",
+          "recurso": "monedas",
+          "requerido": true
+        },
+        "anticipo": {
+          "nombre": "Anticipo entregado",
+          "tipo": "decimal",
+          "min": 0,
+          "max": 999999999,
+          "decimales": 2,
+          "defecto": "0"
+        },
+        "observaciones": {
+          "nombre": "Observaciones",
+          "tipo": "area",
+          "max": 3000
+        }
+      },
+      "columnas": [
+        "numero",
+        "fecha",
+        "chofer_id",
+        "kilometros",
+        "gastos",
+        "diferencia",
+        "estado"
+      ],
+      "unicos": [
+        "numero"
+      ],
+      "calculados": [
+        "estado",
+        "kilometros",
+        "gastos",
+        "diferencia"
+      ]
+    },
+    "gastos": {
+      "titulo": "Gastos de viaje",
+      "singular": "Gasto",
+      "area": "Flota",
+      "fuente": "renmov",
+      "campos": {
+        "rendicion_id": {
+          "nombre": "Rendición",
+          "tipo": "referencia",
+          "recurso": "rendiciones",
+          "requerido": true
+        },
+        "fecha": {
+          "nombre": "Fecha",
+          "tipo": "fecha",
+          "requerido": true
+        },
+        "concepto": {
+          "nombre": "Concepto",
+          "tipo": "texto",
+          "requerido": true,
+          "max": 200
+        },
+        "importe": {
+          "nombre": "Importe en moneda de la rendición",
+          "tipo": "decimal",
+          "min": "0.01",
+          "max": 999999999,
+          "decimales": 2,
+          "requerido": true
+        },
+        "comprobante": {
+          "nombre": "Referencia del comprobante",
+          "tipo": "texto",
+          "max": 100
+        }
+      },
+      "columnas": [
+        "rendicion_id",
+        "fecha",
+        "concepto",
+        "importe"
+      ]
+    },
+    "repuestos": {
+      "titulo": "Repuestos y conceptos",
+      "singular": "Repuesto",
+      "area": "Flota",
+      "fuente": "repuestos",
+      "campos": {
+        "codigo": {
+          "nombre": "Código",
+          "tipo": "texto",
+          "requerido": true,
+          "max": 30
+        },
+        "nombre": {
+          "nombre": "Descripción",
+          "tipo": "texto",
+          "requerido": true,
+          "max": 120
+        },
+        "controla_stock": {
+          "nombre": "Controlar stock",
+          "tipo": "booleano",
+          "defecto": true
+        },
+        "stock_minimo": {
+          "nombre": "Stock mínimo",
+          "tipo": "entero",
+          "min": 0,
+          "max": 999999,
+          "defecto": 0
+        },
+        "precio": {
+          "nombre": "Precio de referencia",
+          "tipo": "decimal",
+          "min": 0,
+          "max": 999999999,
+          "decimales": 2,
+          "defecto": "0"
+        }
+      },
+      "columnas": [
+        "codigo",
+        "nombre",
+        "stock",
+        "stock_minimo",
+        "precio"
+      ],
+      "unicos": [
+        "codigo"
+      ],
+      "calculados": [
+        "stock"
+      ]
+    },
+    "comprobantes": {
+      "titulo": "Comprobantes",
+      "singular": "Comprobante",
+      "area": "Administración",
+      "fuente": "movim",
+      "campos": {},
+      "columnas": [
+        "numero",
+        "fecha",
+        "operacion",
+        "tipo",
+        "tercero",
+        "moneda_id",
+        "total",
+        "saldo",
+        "estado"
+      ],
+      "servicio": true
+    },
+    "pagos": {
+      "titulo": "Cobros y pagos",
+      "singular": "Cobro / pago",
+      "area": "Administración",
+      "fuente": "movim",
+      "campos": {},
+      "columnas": [
+        "numero",
+        "fecha",
+        "operacion",
+        "moneda_id",
+        "importe",
+        "estado"
+      ],
+      "servicio": true
+    },
+    "aplicaciones": {
+      "titulo": "Compensaciones",
+      "singular": "Compensación",
+      "area": "Administración",
+      "fuente": "movim",
+      "campos": {},
+      "columnas": [
+        "fecha",
+        "credito_id",
+        "debito_id",
+        "importe",
+        "estado"
+      ],
+      "servicio": true
+    },
+    "reparaciones": {
+      "titulo": "Reparaciones y consumos",
+      "singular": "Reparación",
+      "area": "Flota",
+      "fuente": "repmov",
+      "campos": {},
+      "columnas": [
+        "fecha",
+        "equipo_id",
+        "repuesto_id",
+        "cantidad",
+        "costo",
+        "estado"
+      ],
+      "servicio": true
+    },
+    "stock": {
+      "titulo": "Movimientos de stock",
+      "singular": "Movimiento de stock",
+      "area": "Flota",
+      "fuente": "repmov",
+      "campos": {},
+      "columnas": [
+        "fecha",
+        "repuesto_id",
+        "cantidad",
+        "motivo",
+        "estado"
+      ],
+      "servicio": true
+    }
+  },
+  "servers": [
+    {
+      "url": "https://api.paso.sys.ar",
+      "description": "Producción"
+    },
+    {
+      "url": "https://api.demo.paso.sys.ar",
+      "description": "Sandbox"
+    }
+  ],
+  "security": [
+    {
+      "BearerAuth": []
+    }
+  ]
+}
