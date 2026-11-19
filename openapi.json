@@ -469,6 +469,1438 @@
         }
       }
     },
+    "/api/v1/mantenimiento/ordenes": {
+      "post": {
+        "tags": [
+          "Mantenimiento"
+        ],
+        "summary": "Abrir Orden Taller",
+        "operationId": "abrir_orden_taller_api_v1_mantenimiento_ordenes_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Orden"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "Idempotency-Key",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "minLength": 8,
+              "maxLength": 120
+            }
+          }
+        ]
+      }
+    },
+    "/api/v1/mantenimiento/ordenes/{ident}/estado": {
+      "post": {
+        "tags": [
+          "Mantenimiento"
+        ],
+        "summary": "Actualizar Orden Taller",
+        "operationId": "actualizar_orden_taller_api_v1_mantenimiento_ordenes__ident__estado_post",
+        "parameters": [
+          {
+            "name": "ident",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "title": "Ident"
+            }
+          },
+          {
+            "name": "Idempotency-Key",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "minLength": 8,
+              "maxLength": 120
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/aplicacion__taller__Estado"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/mantenimiento/compras/{ident}/ofertas": {
+      "post": {
+        "tags": [
+          "Mantenimiento"
+        ],
+        "summary": "Cotizar Compra Taller",
+        "operationId": "cotizar_compra_taller_api_v1_mantenimiento_compras__ident__ofertas_post",
+        "parameters": [
+          {
+            "name": "ident",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "title": "Ident"
+            }
+          },
+          {
+            "name": "Idempotency-Key",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "minLength": 8,
+              "maxLength": 120
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Oferta"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/mantenimiento/compras/{ident}/recibir": {
+      "post": {
+        "tags": [
+          "Mantenimiento"
+        ],
+        "summary": "Recibir Compra Taller",
+        "operationId": "recibir_compra_taller_api_v1_mantenimiento_compras__ident__recibir_post",
+        "parameters": [
+          {
+            "name": "ident",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "title": "Ident"
+            }
+          },
+          {
+            "name": "Idempotency-Key",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "minLength": 8,
+              "maxLength": 120
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Recepcion"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/mantenimiento/equipos/{ident}/lectura": {
+      "post": {
+        "tags": [
+          "Mantenimiento"
+        ],
+        "summary": "Registrar Lectura Tablero",
+        "operationId": "registrar_lectura_tablero_api_v1_mantenimiento_equipos__ident__lectura_post",
+        "parameters": [
+          {
+            "name": "ident",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "title": "Ident"
+            }
+          },
+          {
+            "name": "Idempotency-Key",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "minLength": 8,
+              "maxLength": 120
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Lectura"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/mantenimiento/equipos/{ident}/urea": {
+      "post": {
+        "tags": [
+          "Mantenimiento"
+        ],
+        "summary": "Relevar Urea",
+        "operationId": "relevar_urea_api_v1_mantenimiento_equipos__ident__urea_post",
+        "parameters": [
+          {
+            "name": "ident",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "title": "Ident"
+            }
+          },
+          {
+            "name": "Idempotency-Key",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "minLength": 8,
+              "maxLength": 120
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Urea"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/mantenimiento/equipos/{ident}/servicio": {
+      "post": {
+        "tags": [
+          "Mantenimiento"
+        ],
+        "summary": "Registrar Servicio Preventivo",
+        "operationId": "registrar_servicio_preventivo_api_v1_mantenimiento_equipos__ident__servicio_post",
+        "parameters": [
+          {
+            "name": "ident",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "title": "Ident"
+            }
+          },
+          {
+            "name": "Idempotency-Key",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "minLength": 8,
+              "maxLength": 120
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Servicio"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/mantenimiento/equipos/{ident}/plan": {
+      "post": {
+        "tags": [
+          "Mantenimiento"
+        ],
+        "summary": "Configurar Plan Preventivo",
+        "operationId": "configurar_plan_preventivo_api_v1_mantenimiento_equipos__ident__plan_post",
+        "parameters": [
+          {
+            "name": "ident",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "title": "Ident"
+            }
+          },
+          {
+            "name": "Idempotency-Key",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "minLength": 8,
+              "maxLength": 120
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Plan"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/mantenimiento/equipos/{ident}/acoplar": {
+      "post": {
+        "tags": [
+          "Mantenimiento"
+        ],
+        "summary": "Actualizar Acople",
+        "operationId": "actualizar_acople_api_v1_mantenimiento_equipos__ident__acoplar_post",
+        "parameters": [
+          {
+            "name": "ident",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "title": "Ident"
+            }
+          },
+          {
+            "name": "Idempotency-Key",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "minLength": 8,
+              "maxLength": 120
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Acople"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/mantenimiento/checklists/diario": {
+      "post": {
+        "tags": [
+          "Mantenimiento"
+        ],
+        "summary": "Registrar Checklist Diario",
+        "operationId": "registrar_checklist_diario_api_v1_mantenimiento_checklists_diario_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Diario"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "Idempotency-Key",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "minLength": 8,
+              "maxLength": 120
+            }
+          }
+        ]
+      }
+    },
+    "/api/v1/mantenimiento/checklists/porteria": {
+      "post": {
+        "tags": [
+          "Mantenimiento"
+        ],
+        "summary": "Registrar Checklist Porteria",
+        "operationId": "registrar_checklist_porteria_api_v1_mantenimiento_checklists_porteria_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Porteria"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "Idempotency-Key",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "minLength": 8,
+              "maxLength": 120
+            }
+          }
+        ]
+      }
+    },
+    "/api/v1/mantenimiento/checklists/fallas/{ident}/cerrar": {
+      "post": {
+        "tags": [
+          "Mantenimiento"
+        ],
+        "summary": "Cerrar Falla Diaria",
+        "operationId": "cerrar_falla_diaria_api_v1_mantenimiento_checklists_fallas__ident__cerrar_post",
+        "parameters": [
+          {
+            "name": "ident",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "title": "Ident"
+            }
+          },
+          {
+            "name": "Idempotency-Key",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "minLength": 8,
+              "maxLength": 120
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Cierre"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/mantenimiento/inventario/elementos": {
+      "post": {
+        "tags": [
+          "Mantenimiento"
+        ],
+        "summary": "Crear Elemento Inventario",
+        "operationId": "crear_elemento_inventario_api_v1_mantenimiento_inventario_elementos_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Elemento"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "Idempotency-Key",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "minLength": 8,
+              "maxLength": 120
+            }
+          }
+        ]
+      }
+    },
+    "/api/v1/mantenimiento/inventario/movimientos": {
+      "post": {
+        "tags": [
+          "Mantenimiento"
+        ],
+        "summary": "Registrar Movimiento Inventario",
+        "operationId": "registrar_movimiento_inventario_api_v1_mantenimiento_inventario_movimientos_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Operacion"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "Idempotency-Key",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "minLength": 8,
+              "maxLength": 120
+            }
+          }
+        ]
+      }
+    },
+    "/api/v1/mantenimiento/cubiertas/rotar": {
+      "post": {
+        "tags": [
+          "Mantenimiento"
+        ],
+        "summary": "Rotar Cubiertas",
+        "operationId": "rotar_cubiertas_api_v1_mantenimiento_cubiertas_rotar_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Permuta"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "Idempotency-Key",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "minLength": 8,
+              "maxLength": 120
+            }
+          }
+        ]
+      }
+    },
+    "/api/v1/mantenimiento/cubiertas/reemplazar": {
+      "post": {
+        "tags": [
+          "Mantenimiento"
+        ],
+        "summary": "Reemplazar Cubierta",
+        "operationId": "reemplazar_cubierta_api_v1_mantenimiento_cubiertas_reemplazar_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Reemplazo"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "Idempotency-Key",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "minLength": 8,
+              "maxLength": 120
+            }
+          }
+        ]
+      }
+    },
+    "/api/v1/mantenimiento/carga-masiva": {
+      "post": {
+        "tags": [
+          "Mantenimiento"
+        ],
+        "summary": "Cargar Csv Mantenimiento",
+        "operationId": "cargar_csv_mantenimiento_api_v1_mantenimiento_carga_masiva_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Carga"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "Idempotency-Key",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "minLength": 8,
+              "maxLength": 120
+            }
+          }
+        ]
+      }
+    },
+    "/api/v1/mantenimiento/cubiertas": {
+      "post": {
+        "tags": [
+          "Mantenimiento"
+        ],
+        "summary": "Alta Cubierta",
+        "operationId": "alta_cubierta_api_v1_mantenimiento_cubiertas_post",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Alta"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "Idempotency-Key",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "minLength": 8,
+              "maxLength": 120
+            }
+          }
+        ]
+      },
+      "get": {
+        "tags": [
+          "Mantenimiento"
+        ],
+        "summary": "Listar Cubiertas",
+        "operationId": "listar_cubiertas_api_v1_mantenimiento_cubiertas_get",
+        "parameters": [
+          {
+            "name": "desde",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "minimum": 0,
+              "default": 0,
+              "title": "Desde"
+            }
+          },
+          {
+            "name": "limite",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "maximum": 500,
+              "minimum": 1,
+              "default": 100,
+              "title": "Limite"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/mantenimiento/cubiertas/{ident}/movimientos": {
+      "post": {
+        "tags": [
+          "Mantenimiento"
+        ],
+        "summary": "Mover Cubierta",
+        "operationId": "mover_cubierta_api_v1_mantenimiento_cubiertas__ident__movimientos_post",
+        "parameters": [
+          {
+            "name": "ident",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "title": "Ident"
+            }
+          },
+          {
+            "name": "Idempotency-Key",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "minLength": 8,
+              "maxLength": 120
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Movimiento"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/mantenimiento/checklists/cumplimiento": {
+      "get": {
+        "tags": [
+          "Mantenimiento"
+        ],
+        "summary": "Cumplimiento Checklists",
+        "operationId": "cumplimiento_checklists_api_v1_mantenimiento_checklists_cumplimiento_get",
+        "parameters": [
+          {
+            "name": "desde",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "date",
+              "title": "Desde"
+            }
+          },
+          {
+            "name": "hasta",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "date",
+              "title": "Hasta"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/mantenimiento/taller": {
+      "get": {
+        "tags": [
+          "Mantenimiento"
+        ],
+        "summary": "Taller Pendientes",
+        "operationId": "taller_pendientes_api_v1_mantenimiento_taller_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/mantenimiento/exportar/cubiertas": {
+      "get": {
+        "tags": [
+          "Mantenimiento"
+        ],
+        "summary": "Export Tires",
+        "operationId": "export_tires_api_v1_mantenimiento_exportar_cubiertas_get",
+        "parameters": [
+          {
+            "name": "desde",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "minimum": 0,
+              "default": 0,
+              "title": "Desde"
+            }
+          },
+          {
+            "name": "limite",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "maximum": 2000,
+              "minimum": 1,
+              "default": 500,
+              "title": "Limite"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/mantenimiento/equipos/{ident}/ficha": {
+      "get": {
+        "tags": [
+          "Mantenimiento"
+        ],
+        "summary": "Ficha Equipo",
+        "operationId": "ficha_equipo_api_v1_mantenimiento_equipos__ident__ficha_get",
+        "parameters": [
+          {
+            "name": "ident",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "title": "Ident"
+            }
+          },
+          {
+            "name": "corte",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "date",
+              "title": "Corte"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/mantenimiento/ordenes/{ident}": {
+      "get": {
+        "tags": [
+          "Mantenimiento"
+        ],
+        "summary": "Consultar Orden",
+        "operationId": "consultar_orden_api_v1_mantenimiento_ordenes__ident__get",
+        "parameters": [
+          {
+            "name": "ident",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "title": "Ident"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/mantenimiento/cubiertas/{ident}": {
+      "get": {
+        "tags": [
+          "Mantenimiento"
+        ],
+        "summary": "Tire History",
+        "operationId": "tire_history_api_v1_mantenimiento_cubiertas__ident__get",
+        "parameters": [
+          {
+            "name": "ident",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "title": "Ident"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/mantenimiento/equipos/{ident}/cubiertas": {
+      "get": {
+        "tags": [
+          "Mantenimiento"
+        ],
+        "summary": "Mapa Cubiertas",
+        "operationId": "mapa_cubiertas_api_v1_mantenimiento_equipos__ident__cubiertas_get",
+        "parameters": [
+          {
+            "name": "ident",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "title": "Ident"
+            }
+          },
+          {
+            "name": "corte",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "date",
+              "title": "Corte"
+            }
+          },
+          {
+            "name": "km",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "integer",
+                  "minimum": 0
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Km"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/api/v1/operaciones/comprobantes": {
       "post": {
         "tags": [
@@ -505,7 +1937,19 @@
               }
             }
           }
-        }
+        },
+        "parameters": [
+          {
+            "name": "Idempotency-Key",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "minLength": 8,
+              "maxLength": 120
+            }
+          }
+        ]
       }
     },
     "/api/v1/operaciones/pagos": {
@@ -544,7 +1988,19 @@
               }
             }
           }
-        }
+        },
+        "parameters": [
+          {
+            "name": "Idempotency-Key",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "minLength": 8,
+              "maxLength": 120
+            }
+          }
+        ]
       }
     },
     "/api/v1/operaciones/aplicaciones": {
@@ -583,7 +2039,19 @@
               }
             }
           }
-        }
+        },
+        "parameters": [
+          {
+            "name": "Idempotency-Key",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "minLength": 8,
+              "maxLength": 120
+            }
+          }
+        ]
       }
     },
     "/api/v1/operaciones/stock": {
@@ -622,7 +2090,19 @@
               }
             }
           }
-        }
+        },
+        "parameters": [
+          {
+            "name": "Idempotency-Key",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "minLength": 8,
+              "maxLength": 120
+            }
+          }
+        ]
       }
     },
     "/api/v1/operaciones/reparaciones": {
@@ -661,7 +2141,19 @@
               }
             }
           }
-        }
+        },
+        "parameters": [
+          {
+            "name": "Idempotency-Key",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "minLength": 8,
+              "maxLength": 120
+            }
+          }
+        ]
       }
     },
     "/api/v1/operaciones/{recurso}/{ident}/anular": {
@@ -687,6 +2179,16 @@
             "schema": {
               "type": "integer",
               "title": "Ident"
+            }
+          },
+          {
+            "name": "Idempotency-Key",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "minLength": 8,
+              "maxLength": 120
             }
           }
         ],
@@ -883,6 +2385,16 @@
               "type": "string",
               "title": "Accion"
             }
+          },
+          {
+            "name": "Idempotency-Key",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "minLength": 8,
+              "maxLength": 120
+            }
           }
         ],
         "requestBody": {
@@ -916,81 +2428,1530 @@
           }
         }
       }
+    },
+    "/api/v1/flota-disponibilidad": {
+      "get": {
+        "tags": [
+          "Operación de flota"
+        ],
+        "summary": "Disponibilidad",
+        "operationId": "disponibilidad_api_v1_flota_disponibilidad_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/flota-disponibilidad/{ident}": {
+      "put": {
+        "tags": [
+          "Operación de flota"
+        ],
+        "summary": "Cambiar Estado",
+        "operationId": "cambiar_estado_api_v1_flota_disponibilidad__ident__put",
+        "parameters": [
+          {
+            "name": "ident",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "title": "Ident"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/aplicacion__operacion_tenant__Estado"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/operacion-tenant/taller/{area}": {
+      "get": {
+        "tags": [
+          "Operación de flota"
+        ],
+        "summary": "Lista Taller",
+        "operationId": "lista_taller_api_v1_operacion_tenant_taller__area__get",
+        "parameters": [
+          {
+            "name": "area",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "Area"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/operacion-tenant/servicios/{ident}": {
+      "get": {
+        "tags": [
+          "Operación de flota"
+        ],
+        "summary": "Datos Servicio",
+        "operationId": "datos_servicio_api_v1_operacion_tenant_servicios__ident__get",
+        "parameters": [
+          {
+            "name": "ident",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "title": "Ident"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/mantenimiento/telemetria": {
+      "get": {
+        "tags": [
+          "Telemetría"
+        ],
+        "summary": "Connections",
+        "operationId": "connections_api_v1_mantenimiento_telemetria_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/mantenimiento/telemetria/vehiculos/{provider}/{vin}/consumo": {
+      "get": {
+        "tags": [
+          "Telemetría"
+        ],
+        "summary": "Consumption",
+        "operationId": "consumption_api_v1_mantenimiento_telemetria_vehiculos__provider___vin__consumo_get",
+        "parameters": [
+          {
+            "name": "provider",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "enum": [
+                "scania",
+                "volvo",
+                "fleetboard"
+              ],
+              "type": "string",
+              "title": "Provider"
+            }
+          },
+          {
+            "name": "vin",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "Vin"
+            }
+          },
+          {
+            "name": "desde",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "date-time",
+              "title": "Desde"
+            }
+          },
+          {
+            "name": "hasta",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "date-time",
+              "title": "Hasta"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/mantenimiento/telemetria/mensajes/{provider}/{resource}": {
+      "get": {
+        "tags": [
+          "Telemetría"
+        ],
+        "summary": "Messages",
+        "operationId": "messages_api_v1_mantenimiento_telemetria_mensajes__provider___resource__get",
+        "parameters": [
+          {
+            "name": "provider",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "enum": [
+                "scania",
+                "volvo",
+                "fleetboard"
+              ],
+              "type": "string",
+              "title": "Provider"
+            }
+          },
+          {
+            "name": "resource",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "pattern": "^[A-Za-z][A-Za-z0-9_]{0,79}$",
+              "title": "Resource"
+            }
+          },
+          {
+            "name": "desde",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "minimum": 0,
+              "default": 0,
+              "title": "Desde"
+            }
+          },
+          {
+            "name": "vin",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Vin"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/mantenimiento/telemetria/capacidades": {
+      "get": {
+        "tags": [
+          "Telemetría"
+        ],
+        "summary": "Capabilities",
+        "operationId": "capabilities_api_v1_mantenimiento_telemetria_capacidades_get",
+        "parameters": [
+          {
+            "name": "vin",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Vin"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/mantenimiento/telemetria/vehiculos/{provider}/{vin}/distancia-asignada": {
+      "get": {
+        "tags": [
+          "Telemetría"
+        ],
+        "summary": "Allocated Distance",
+        "description": "Solo intervalos medidos dentro de un único vínculo, montaje o acople comprobado.",
+        "operationId": "allocated_distance_api_v1_mantenimiento_telemetria_vehiculos__provider___vin__distancia_asignada_get",
+        "parameters": [
+          {
+            "name": "provider",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "enum": [
+                "scania",
+                "volvo",
+                "fleetboard"
+              ],
+              "type": "string",
+              "title": "Provider"
+            }
+          },
+          {
+            "name": "vin",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "Vin"
+            }
+          },
+          {
+            "name": "desde",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "date-time",
+              "title": "Desde"
+            }
+          },
+          {
+            "name": "hasta",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "date-time",
+              "title": "Hasta"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/mantenimiento/informes/{tipo}": {
+      "get": {
+        "tags": [
+          "Mantenimiento"
+        ],
+        "summary": "Consultar",
+        "operationId": "consultar_api_v1_mantenimiento_informes__tipo__get",
+        "parameters": [
+          {
+            "name": "tipo",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "enum": [
+                "movimientos",
+                "stock",
+                "alertas",
+                "proveedores",
+                "bajas",
+                "costos"
+              ],
+              "type": "string",
+              "title": "Tipo"
+            }
+          },
+          {
+            "name": "corte",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "date",
+              "title": "Corte"
+            }
+          },
+          {
+            "name": "desde",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string",
+                  "format": "date"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Desde"
+            }
+          },
+          {
+            "name": "marca",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "default": "",
+              "title": "Marca"
+            }
+          },
+          {
+            "name": "equipo_id",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "integer"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Equipo Id"
+            }
+          },
+          {
+            "name": "cursor",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "minimum": 0,
+              "default": 0,
+              "title": "Cursor"
+            }
+          },
+          {
+            "name": "limite",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "maximum": 1000,
+              "minimum": 1,
+              "default": 200,
+              "title": "Limite"
+            }
+          },
+          {
+            "name": "formato",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "enum": [
+                "json",
+                "csv"
+              ],
+              "type": "string",
+              "default": "json",
+              "title": "Formato"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/mantenimiento/panel/resumen": {
+      "get": {
+        "tags": [
+          "Mantenimiento"
+        ],
+        "summary": "Resumen",
+        "operationId": "resumen_api_v1_mantenimiento_panel_resumen_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/mantenimiento/panel/historial": {
+      "get": {
+        "tags": [
+          "Mantenimiento"
+        ],
+        "summary": "Historial",
+        "operationId": "historial_api_v1_mantenimiento_panel_historial_get",
+        "parameters": [
+          {
+            "name": "busqueda",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "default": "",
+              "title": "Busqueda"
+            }
+          },
+          {
+            "name": "cursor",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "minimum": 0,
+              "default": 0,
+              "title": "Cursor"
+            }
+          },
+          {
+            "name": "lote",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "default": "",
+              "title": "Lote"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/mantenimiento/panel/costos": {
+      "get": {
+        "tags": [
+          "Mantenimiento"
+        ],
+        "summary": "Costos",
+        "operationId": "costos_api_v1_mantenimiento_panel_costos_get",
+        "parameters": [
+          {
+            "name": "desde",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "date",
+              "title": "Desde"
+            }
+          },
+          {
+            "name": "hasta",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "date",
+              "title": "Hasta"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/mantenimiento/panel/buscar": {
+      "get": {
+        "tags": [
+          "Mantenimiento"
+        ],
+        "summary": "Buscar",
+        "operationId": "buscar_api_v1_mantenimiento_panel_buscar_get",
+        "parameters": [
+          {
+            "name": "q",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 100,
+              "title": "Q"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/mantenimiento/panel/pendientes": {
+      "get": {
+        "tags": [
+          "Mantenimiento"
+        ],
+        "summary": "Pendientes",
+        "operationId": "pendientes_api_v1_mantenimiento_panel_pendientes_get",
+        "parameters": [
+          {
+            "name": "corte",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "date",
+              "title": "Corte"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/mantenimiento/panel/equipos/{ident}/historia": {
+      "get": {
+        "tags": [
+          "Mantenimiento"
+        ],
+        "summary": "Historia Equipo",
+        "operationId": "historia_equipo_api_v1_mantenimiento_panel_equipos__ident__historia_get",
+        "parameters": [
+          {
+            "name": "ident",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "title": "Ident"
+            }
+          },
+          {
+            "name": "offset",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "minimum": 0,
+              "default": 0,
+              "title": "Offset"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/mantenimiento/panel/deposito": {
+      "get": {
+        "tags": [
+          "Mantenimiento"
+        ],
+        "summary": "Deposito",
+        "operationId": "deposito_api_v1_mantenimiento_panel_deposito_get",
+        "parameters": [
+          {
+            "name": "numero",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "maxLength": 80,
+              "title": "Numero"
+            }
+          },
+          {
+            "name": "offset",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "minimum": 0,
+              "default": 0,
+              "title": "Offset"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/busqueda": {
+      "get": {
+        "tags": [
+          "Búsqueda"
+        ],
+        "summary": "Buscar",
+        "operationId": "buscar_api_v1_busqueda_get",
+        "parameters": [
+          {
+            "name": "q",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 100,
+              "title": "Q"
+            }
+          },
+          {
+            "name": "offset",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "minimum": 0,
+              "default": 0,
+              "title": "Offset"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/busqueda/relaciones/{resource}/{ident}": {
+      "get": {
+        "tags": [
+          "Búsqueda"
+        ],
+        "summary": "Relaciones",
+        "operationId": "relaciones_api_v1_busqueda_relaciones__resource___ident__get",
+        "parameters": [
+          {
+            "name": "resource",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "Resource"
+            }
+          },
+          {
+            "name": "ident",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "title": "Ident"
+            }
+          },
+          {
+            "name": "offset",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "minimum": 0,
+              "default": 0,
+              "title": "Offset"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/busqueda/taller/{kind}/{ident}": {
+      "get": {
+        "tags": [
+          "Búsqueda"
+        ],
+        "summary": "Ficha Taller",
+        "operationId": "ficha_taller_api_v1_busqueda_taller__kind___ident__get",
+        "parameters": [
+          {
+            "name": "kind",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "Kind"
+            }
+          },
+          {
+            "name": "ident",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "title": "Ident"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/busqueda/relaciones/equipos/{ident}/periodos": {
+      "get": {
+        "tags": [
+          "Búsqueda"
+        ],
+        "summary": "Periodos",
+        "operationId": "periodos_api_v1_busqueda_relaciones_equipos__ident__periodos_get",
+        "parameters": [
+          {
+            "name": "ident",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "title": "Ident"
+            }
+          },
+          {
+            "name": "offset",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "minimum": 0,
+              "default": 0,
+              "title": "Offset"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/logistica/viajes": {
+      "post": {
+        "tags": [
+          "Logística y choferes"
+        ],
+        "summary": "Create Trip",
+        "operationId": "create_trip_api_v1_logistica_viajes_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Trip"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/logistica/cajas": {
+      "get": {
+        "tags": [
+          "Logística y choferes"
+        ],
+        "summary": "Logistics Cash",
+        "operationId": "logistics_cash_api_v1_logistica_cajas_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/logistica/cajas/{report_id}/entregas": {
+      "post": {
+        "tags": [
+          "Logística y choferes"
+        ],
+        "summary": "Delivery",
+        "operationId": "delivery_api_v1_logistica_cajas__report_id__entregas_post",
+        "parameters": [
+          {
+            "name": "report_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "title": "Report Id"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CashMovement"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/logistica/cajas/{report_id}/gastos-previstos": {
+      "post": {
+        "tags": [
+          "Logística y choferes"
+        ],
+        "summary": "Expected Expense",
+        "operationId": "expected_expense_api_v1_logistica_cajas__report_id__gastos_previstos_post",
+        "parameters": [
+          {
+            "name": "report_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "title": "Report Id"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ExpectedExpense"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/logistica/gastos/{ident}/autorizar": {
+      "post": {
+        "tags": [
+          "Logística y choferes"
+        ],
+        "summary": "Authorize Expense",
+        "operationId": "authorize_expense_api_v1_logistica_gastos__ident__autorizar_post",
+        "parameters": [
+          {
+            "name": "ident",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "title": "Ident"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/aplicacion__logistica__Decision"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/logistica/gastos/{ident}/revisar": {
+      "post": {
+        "tags": [
+          "Logística y choferes"
+        ],
+        "summary": "Review Expense",
+        "operationId": "review_expense_api_v1_logistica_gastos__ident__revisar_post",
+        "parameters": [
+          {
+            "name": "ident",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "title": "Ident"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/aplicacion__logistica__Decision"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/logistica/cajas/{report_id}/cerrar": {
+      "post": {
+        "tags": [
+          "Logística y choferes"
+        ],
+        "summary": "Close Cash",
+        "operationId": "close_cash_api_v1_logistica_cajas__report_id__cerrar_post",
+        "parameters": [
+          {
+            "name": "report_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "title": "Report Id"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/LogisticsClose"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
     }
   },
   "components": {
     "schemas": {
-      "Accion": {
-        "properties": {
-          "version": {
-            "type": "integer",
-            "exclusiveMinimum": 0.0,
-            "title": "Version"
-          },
-          "fecha": {
-            "anyOf": [
-              {
-                "type": "string",
-                "format": "date"
-              },
-              {
-                "type": "null"
-              }
-            ],
-            "title": "Fecha"
-          },
-          "cotizacion": {
-            "anyOf": [
-              {
-                "type": "number",
-                "maximum": 10000000.0,
-                "exclusiveMinimum": 0.0
-              },
-              {
-                "type": "string"
-              },
-              {
-                "type": "null"
-              }
-            ],
-            "title": "Cotizacion"
-          }
-        },
-        "additionalProperties": false,
-        "type": "object",
-        "required": [
-          "version"
+      "ResourceName": {
+        "type": "string",
+        "enum": [
+          "clientes",
+          "proveedores",
+          "propietarios",
+          "empresas",
+          "choferes",
+          "equipos",
+          "distancias",
+          "monedas",
+          "impuestos",
+          "condiciones",
+          "cotizaciones",
+          "crt",
+          "mic",
+          "mic_hojas",
+          "hojas_ruta",
+          "desgloses",
+          "rendiciones",
+          "gastos",
+          "repuestos",
+          "comprobantes",
+          "pagos",
+          "aplicaciones",
+          "reparaciones",
+          "stock"
         ],
-        "title": "Accion"
+        "title": "ResourceName"
       },
-      "Asignacion": {
+      "HTTPValidationError": {
         "properties": {
-          "comprobante_id": {
-            "type": "integer",
-            "exclusiveMinimum": 0.0,
-            "title": "Comprobante Id"
+          "detail": {
+            "items": {
+              "$ref": "#/components/schemas/ValidationError"
+            },
+            "type": "array",
+            "title": "Detail"
+          }
+        },
+        "type": "object",
+        "title": "HTTPValidationError"
+      },
+      "ValidationError": {
+        "properties": {
+          "loc": {
+            "items": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "integer"
+                }
+              ]
+            },
+            "type": "array",
+            "title": "Location"
           },
-          "importe": {
-            "anyOf": [
-              {
-                "type": "number",
-                "maximum": 999999999.0,
-                "exclusiveMinimum": 0.0
-              },
-              {
-                "type": "string"
-              }
-            ],
-            "title": "Importe"
+          "msg": {
+            "type": "string",
+            "title": "Message"
+          },
+          "type": {
+            "type": "string",
+            "title": "Error Type"
+          },
+          "input": {
+            "title": "Input"
+          },
+          "ctx": {
+            "type": "object",
+            "title": "Context"
+          }
+        },
+        "type": "object",
+        "required": [
+          "loc",
+          "msg",
+          "type"
+        ],
+        "title": "ValidationError"
+      },
+      "Datos": {
+        "properties": {
+          "datos": {
+            "additionalProperties": true,
+            "type": "object",
+            "title": "Datos"
           }
         },
         "additionalProperties": false,
         "type": "object",
         "required": [
-          "comprobante_id",
-          "importe"
+          "datos"
         ],
-        "title": "Asignacion"
+        "title": "Datos"
       },
       "Cambio": {
         "properties": {
@@ -1013,14 +3974,177 @@
         ],
         "title": "Cambio"
       },
-      "CashMovement": {
+      "Version": {
         "properties": {
+          "version": {
+            "type": "integer",
+            "exclusiveMinimum": 0.0,
+            "title": "Version"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "version"
+        ],
+        "title": "Version"
+      },
+      "Orden": {
+        "properties": {
+          "equipo_id": {
+            "type": "integer",
+            "exclusiveMinimum": 0.0,
+            "title": "Equipo Id"
+          },
           "fecha": {
             "type": "string",
             "format": "date",
             "title": "Fecha"
           },
-          "importe": {
+          "detalle": {
+            "type": "string",
+            "maxLength": 500,
+            "minLength": 1,
+            "title": "Detalle"
+          },
+          "prioridad": {
+            "type": "string",
+            "enum": [
+              "P1",
+              "P2",
+              "P3"
+            ],
+            "title": "Prioridad",
+            "default": "P2"
+          },
+          "origen": {
+            "type": "string",
+            "enum": [
+              "manual",
+              "auxilio"
+            ],
+            "title": "Origen",
+            "default": "manual"
+          },
+          "repuestos": {
+            "items": {
+              "$ref": "#/components/schemas/aplicacion__taller__Linea"
+            },
+            "type": "array",
+            "maxItems": 100,
+            "title": "Repuestos"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "equipo_id",
+          "fecha",
+          "detalle"
+        ],
+        "title": "Orden"
+      },
+      "aplicacion__taller__Linea": {
+        "properties": {
+          "repuesto_id": {
+            "type": "integer",
+            "exclusiveMinimum": 0.0,
+            "title": "Repuesto Id"
+          },
+          "cantidad": {
+            "type": "integer",
+            "maximum": 999999.0,
+            "exclusiveMinimum": 0.0,
+            "title": "Cantidad"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "repuesto_id",
+          "cantidad"
+        ],
+        "title": "Linea"
+      },
+      "aplicacion__taller__Estado": {
+        "properties": {
+          "version": {
+            "type": "integer",
+            "exclusiveMinimum": 0.0,
+            "title": "Version"
+          },
+          "estado": {
+            "type": "string",
+            "enum": [
+              "en_transito",
+              "en_atencion",
+              "cerrada",
+              "anulada"
+            ],
+            "title": "Estado"
+          },
+          "fecha": {
+            "type": "string",
+            "format": "date",
+            "title": "Fecha"
+          },
+          "km": {
+            "anyOf": [
+              {
+                "type": "integer",
+                "maximum": 99999999.0,
+                "minimum": 0.0
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Km"
+          },
+          "costos_por_repuesto": {
+            "additionalProperties": {
+              "anyOf": [
+                {
+                  "type": "number",
+                  "maximum": 999999999.0,
+                  "minimum": 0.0
+                },
+                {
+                  "type": "string"
+                }
+              ]
+            },
+            "type": "object",
+            "title": "Costos Por Repuesto"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "version",
+          "estado",
+          "fecha"
+        ],
+        "title": "Estado"
+      },
+      "Oferta": {
+        "properties": {
+          "version": {
+            "type": "integer",
+            "exclusiveMinimum": 0.0,
+            "title": "Version"
+          },
+          "proveedor_id": {
+            "type": "integer",
+            "exclusiveMinimum": 0.0,
+            "title": "Proveedor Id"
+          },
+          "moneda_id": {
+            "type": "integer",
+            "exclusiveMinimum": 0.0,
+            "title": "Moneda Id"
+          },
+          "precio_unitario_con_impuestos": {
             "anyOf": [
               {
                 "type": "number",
@@ -1031,12 +4155,127 @@
                 "type": "string"
               }
             ],
-            "title": "Importe"
+            "title": "Precio Unitario Con Impuestos"
           },
-          "referencia": {
+          "plazo_dias": {
+            "type": "integer",
+            "maximum": 3650.0,
+            "minimum": 0.0,
+            "title": "Plazo Dias"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "version",
+          "proveedor_id",
+          "moneda_id",
+          "precio_unitario_con_impuestos",
+          "plazo_dias"
+        ],
+        "title": "Oferta"
+      },
+      "Recepcion": {
+        "properties": {
+          "version": {
+            "type": "integer",
+            "exclusiveMinimum": 0.0,
+            "title": "Version"
+          },
+          "cantidad": {
+            "type": "integer",
+            "maximum": 999999.0,
+            "exclusiveMinimum": 0.0,
+            "title": "Cantidad"
+          },
+          "fecha": {
             "type": "string",
-            "maxLength": 200,
-            "title": "Referencia",
+            "format": "date",
+            "title": "Fecha"
+          },
+          "remito": {
+            "type": "string",
+            "maxLength": 100,
+            "minLength": 1,
+            "title": "Remito"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "version",
+          "cantidad",
+          "fecha",
+          "remito"
+        ],
+        "title": "Recepcion"
+      },
+      "Lectura": {
+        "properties": {
+          "fecha": {
+            "type": "string",
+            "format": "date",
+            "title": "Fecha"
+          },
+          "visible": {
+            "type": "integer",
+            "exclusiveMaximum": 1000000.0,
+            "minimum": 0.0,
+            "title": "Visible"
+          },
+          "reinicio_confirmado": {
+            "type": "boolean",
+            "title": "Reinicio Confirmado",
+            "default": false
+          },
+          "acumulado_inicial": {
+            "anyOf": [
+              {
+                "type": "integer",
+                "minimum": 0.0
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Acumulado Inicial"
+          },
+          "version": {
+            "type": "integer",
+            "minimum": 0.0,
+            "title": "Version"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "fecha",
+          "visible",
+          "version"
+        ],
+        "title": "Lectura"
+      },
+      "Urea": {
+        "properties": {
+          "fecha": {
+            "type": "string",
+            "format": "date",
+            "title": "Fecha"
+          },
+          "clasificacion": {
+            "type": "string",
+            "enum": [
+              "A",
+              "N",
+              "C",
+              "S"
+            ],
+            "title": "Clasificacion"
+          },
+          "nota": {
+            "type": "string",
+            "maxLength": 500,
+            "title": "Nota",
             "default": ""
           }
         },
@@ -1044,79 +4283,1062 @@
         "type": "object",
         "required": [
           "fecha",
-          "importe"
+          "clasificacion"
         ],
-        "title": "CashMovement"
+        "title": "Urea"
       },
-      "Clave": {
-        "properties": {
-          "nombre": {
-            "type": "string",
-            "maxLength": 80,
-            "minLength": 1,
-            "title": "Nombre"
-          },
-          "permiso": {
-            "type": "string",
-            "pattern": "^(lectura|escritura)$",
-            "title": "Permiso",
-            "default": "lectura"
-          },
-          "dias": {
-            "type": "integer",
-            "maximum": 365.0,
-            "minimum": 1.0,
-            "title": "Dias",
-            "default": 90
-          }
-        },
-        "additionalProperties": false,
-        "type": "object",
-        "required": [
-          "nombre"
-        ],
-        "title": "Clave"
-      },
-      "Compensacion": {
+      "Servicio": {
         "properties": {
           "fecha": {
             "type": "string",
             "format": "date",
             "title": "Fecha"
           },
-          "credito_id": {
-            "type": "integer",
-            "exclusiveMinimum": 0.0,
-            "title": "Credito Id"
+          "item": {
+            "type": "string",
+            "maxLength": 80,
+            "minLength": 1,
+            "title": "Item"
           },
-          "debito_id": {
-            "type": "integer",
-            "exclusiveMinimum": 0.0,
-            "title": "Debito Id"
-          },
-          "importe": {
+          "km": {
             "anyOf": [
               {
-                "type": "number",
-                "maximum": 999999999.0,
+                "type": "integer",
+                "minimum": 0.0
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Km"
+          },
+          "estimado": {
+            "type": "boolean",
+            "title": "Estimado",
+            "default": false
+          },
+          "comprobante": {
+            "type": "string",
+            "maxLength": 150,
+            "title": "Comprobante",
+            "default": ""
+          },
+          "proveedor_id": {
+            "anyOf": [
+              {
+                "type": "integer",
                 "exclusiveMinimum": 0.0
               },
               {
-                "type": "string"
+                "type": "null"
               }
             ],
-            "title": "Importe"
+            "title": "Proveedor Id"
           }
         },
         "additionalProperties": false,
         "type": "object",
         "required": [
           "fecha",
-          "credito_id",
-          "debito_id",
-          "importe"
+          "item"
         ],
-        "title": "Compensacion"
+        "title": "Servicio"
+      },
+      "Plan": {
+        "properties": {
+          "fecha": {
+            "type": "string",
+            "format": "date",
+            "title": "Fecha"
+          },
+          "item": {
+            "type": "string",
+            "maxLength": 80,
+            "minLength": 1,
+            "title": "Item"
+          },
+          "politica": {
+            "type": "string",
+            "enum": [
+              "matriz",
+              "general",
+              "scania",
+              "mercedes"
+            ],
+            "title": "Politica"
+          },
+          "intervalo_km": {
+            "anyOf": [
+              {
+                "type": "integer",
+                "exclusiveMinimum": 0.0
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Intervalo Km"
+          },
+          "intervalo_dias": {
+            "anyOf": [
+              {
+                "type": "integer",
+                "exclusiveMinimum": 0.0
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Intervalo Dias"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "fecha",
+          "item",
+          "politica"
+        ],
+        "title": "Plan"
+      },
+      "Acople": {
+        "properties": {
+          "fecha": {
+            "type": "string",
+            "format": "date",
+            "title": "Fecha"
+          },
+          "semi_id": {
+            "anyOf": [
+              {
+                "type": "integer",
+                "exclusiveMinimum": 0.0
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Semi Id"
+          },
+          "acople_anterior_id": {
+            "anyOf": [
+              {
+                "type": "integer",
+                "exclusiveMinimum": 0.0
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Acople Anterior Id"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "fecha"
+        ],
+        "title": "Acople"
+      },
+      "Diario": {
+        "properties": {
+          "equipo_id": {
+            "type": "integer",
+            "exclusiveMinimum": 0.0,
+            "title": "Equipo Id"
+          },
+          "chofer_id": {
+            "type": "integer",
+            "exclusiveMinimum": 0.0,
+            "title": "Chofer Id"
+          },
+          "plantilla_id": {
+            "type": "integer",
+            "exclusiveMinimum": 0.0,
+            "title": "Plantilla Id"
+          },
+          "fecha": {
+            "type": "string",
+            "format": "date",
+            "title": "Fecha"
+          },
+          "hora": {
+            "type": "string",
+            "format": "time",
+            "title": "Hora"
+          },
+          "km": {
+            "anyOf": [
+              {
+                "type": "integer",
+                "minimum": 0.0
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Km"
+          },
+          "lugar": {
+            "type": "string",
+            "maxLength": 150,
+            "minLength": 1,
+            "title": "Lugar"
+          },
+          "destino": {
+            "type": "string",
+            "maxLength": 150,
+            "minLength": 1,
+            "title": "Destino"
+          },
+          "respuestas": {
+            "additionalProperties": {
+              "additionalProperties": {
+                "$ref": "#/components/schemas/ItemDiario"
+              },
+              "propertyNames": {
+                "maxLength": 150,
+                "minLength": 1
+              },
+              "type": "object"
+            },
+            "propertyNames": {
+              "maxLength": 150,
+              "minLength": 1
+            },
+            "type": "object",
+            "title": "Respuestas"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "equipo_id",
+          "chofer_id",
+          "plantilla_id",
+          "fecha",
+          "hora",
+          "lugar",
+          "destino",
+          "respuestas"
+        ],
+        "title": "Diario"
+      },
+      "ItemDiario": {
+        "properties": {
+          "estado": {
+            "type": "string",
+            "enum": [
+              "B",
+              "R",
+              "M"
+            ],
+            "title": "Estado"
+          },
+          "prioridad": {
+            "type": "string",
+            "enum": [
+              "N",
+              "U"
+            ],
+            "title": "Prioridad",
+            "default": "N"
+          },
+          "observacion": {
+            "type": "string",
+            "maxLength": 500,
+            "title": "Observacion",
+            "default": ""
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "estado"
+        ],
+        "title": "ItemDiario"
+      },
+      "Porteria": {
+        "properties": {
+          "equipo_id": {
+            "type": "integer",
+            "exclusiveMinimum": 0.0,
+            "title": "Equipo Id"
+          },
+          "chofer_id": {
+            "type": "integer",
+            "exclusiveMinimum": 0.0,
+            "title": "Chofer Id"
+          },
+          "fecha": {
+            "type": "string",
+            "format": "date",
+            "title": "Fecha"
+          },
+          "circuito": {
+            "type": "string",
+            "enum": [
+              "ingreso",
+              "egreso",
+              "taller"
+            ],
+            "title": "Circuito"
+          },
+          "km": {
+            "anyOf": [
+              {
+                "type": "integer",
+                "minimum": 0.0
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Km"
+          },
+          "tecnico": {
+            "type": "string",
+            "maxLength": 150,
+            "minLength": 1,
+            "title": "Tecnico"
+          },
+          "respuestas": {
+            "additionalProperties": {
+              "$ref": "#/components/schemas/ItemPorteria"
+            },
+            "propertyNames": {
+              "maxLength": 150,
+              "minLength": 1
+            },
+            "type": "object",
+            "title": "Respuestas"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "equipo_id",
+          "chofer_id",
+          "fecha",
+          "circuito",
+          "tecnico",
+          "respuestas"
+        ],
+        "title": "Porteria"
+      },
+      "ItemPorteria": {
+        "properties": {
+          "estado": {
+            "type": "string",
+            "enum": [
+              "conforme",
+              "no_conforme",
+              "requiere_cambio",
+              "ausente"
+            ],
+            "title": "Estado"
+          },
+          "observacion": {
+            "type": "string",
+            "maxLength": 500,
+            "title": "Observacion",
+            "default": ""
+          },
+          "repuesto_id": {
+            "anyOf": [
+              {
+                "type": "integer",
+                "exclusiveMinimum": 0.0
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Repuesto Id"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "estado"
+        ],
+        "title": "ItemPorteria"
+      },
+      "Cierre": {
+        "properties": {
+          "fecha": {
+            "type": "string",
+            "format": "date",
+            "title": "Fecha"
+          },
+          "accion": {
+            "type": "string",
+            "maxLength": 150,
+            "minLength": 1,
+            "title": "Accion"
+          },
+          "responsable": {
+            "type": "string",
+            "maxLength": 150,
+            "minLength": 1,
+            "title": "Responsable"
+          },
+          "orden_id": {
+            "anyOf": [
+              {
+                "type": "integer",
+                "exclusiveMinimum": 0.0
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Orden Id"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "fecha",
+          "accion",
+          "responsable"
+        ],
+        "title": "Cierre"
+      },
+      "Elemento": {
+        "properties": {
+          "descripcion": {
+            "type": "string",
+            "maxLength": 120,
+            "minLength": 1,
+            "title": "Descripcion"
+          },
+          "serie": {
+            "type": "string",
+            "maxLength": 100,
+            "title": "Serie",
+            "default": ""
+          },
+          "vencimiento": {
+            "anyOf": [
+              {
+                "type": "string",
+                "format": "date"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Vencimiento"
+          },
+          "estandar": {
+            "type": "integer",
+            "minimum": 0.0,
+            "title": "Estandar",
+            "default": 0
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "descripcion"
+        ],
+        "title": "Elemento"
+      },
+      "Operacion": {
+        "properties": {
+          "tipo": {
+            "type": "string",
+            "enum": [
+              "recepcion",
+              "transferencia",
+              "prestamo",
+              "devolucion",
+              "perdida",
+              "conteo"
+            ],
+            "title": "Tipo"
+          },
+          "item_id": {
+            "type": "integer",
+            "exclusiveMinimum": 0.0,
+            "title": "Item Id"
+          },
+          "fecha": {
+            "type": "string",
+            "format": "date",
+            "title": "Fecha"
+          },
+          "origen_equipo_id": {
+            "anyOf": [
+              {
+                "type": "integer",
+                "exclusiveMinimum": 0.0
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Origen Equipo Id"
+          },
+          "destino_equipo_id": {
+            "anyOf": [
+              {
+                "type": "integer",
+                "exclusiveMinimum": 0.0
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Destino Equipo Id"
+          },
+          "persona_id": {
+            "anyOf": [
+              {
+                "type": "integer",
+                "exclusiveMinimum": 0.0
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Persona Id"
+          },
+          "prestamo_id": {
+            "anyOf": [
+              {
+                "type": "integer",
+                "exclusiveMinimum": 0.0
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Prestamo Id"
+          },
+          "cantidad": {
+            "type": "integer",
+            "maximum": 999999.0,
+            "minimum": 0.0,
+            "title": "Cantidad"
+          },
+          "version_conteo": {
+            "anyOf": [
+              {
+                "type": "integer",
+                "minimum": 0.0
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Version Conteo"
+          },
+          "motivo": {
+            "type": "string",
+            "maxLength": 500,
+            "minLength": 1,
+            "title": "Motivo"
+          },
+          "documento": {
+            "type": "string",
+            "maxLength": 120,
+            "title": "Documento",
+            "default": ""
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "tipo",
+          "item_id",
+          "fecha",
+          "cantidad",
+          "motivo"
+        ],
+        "title": "Operacion"
+      },
+      "Permuta": {
+        "properties": {
+          "primera": {
+            "$ref": "#/components/schemas/Pieza"
+          },
+          "segunda": {
+            "$ref": "#/components/schemas/Pieza"
+          },
+          "fecha": {
+            "type": "string",
+            "format": "date",
+            "title": "Fecha"
+          },
+          "km_primera": {
+            "anyOf": [
+              {
+                "type": "integer",
+                "minimum": 0.0
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Km Primera"
+          },
+          "km_segunda": {
+            "anyOf": [
+              {
+                "type": "integer",
+                "minimum": 0.0
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Km Segunda"
+          },
+          "motivo": {
+            "type": "string",
+            "maxLength": 500,
+            "minLength": 1,
+            "title": "Motivo"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "primera",
+          "segunda",
+          "fecha",
+          "motivo"
+        ],
+        "title": "Permuta"
+      },
+      "Pieza": {
+        "properties": {
+          "id": {
+            "type": "integer",
+            "exclusiveMinimum": 0.0,
+            "title": "Id"
+          },
+          "version": {
+            "type": "integer",
+            "exclusiveMinimum": 0.0,
+            "title": "Version"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "id",
+          "version"
+        ],
+        "title": "Pieza"
+      },
+      "Reemplazo": {
+        "properties": {
+          "saliente": {
+            "$ref": "#/components/schemas/Pieza"
+          },
+          "entrante": {
+            "$ref": "#/components/schemas/Pieza"
+          },
+          "fecha": {
+            "type": "string",
+            "format": "date",
+            "title": "Fecha"
+          },
+          "km": {
+            "anyOf": [
+              {
+                "type": "integer",
+                "minimum": 0.0
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Km"
+          },
+          "destino": {
+            "type": "string",
+            "enum": [
+              "deposito",
+              "proveedor",
+              "baja"
+            ],
+            "title": "Destino"
+          },
+          "proveedor_id": {
+            "anyOf": [
+              {
+                "type": "integer",
+                "exclusiveMinimum": 0.0
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Proveedor Id"
+          },
+          "motivo": {
+            "type": "string",
+            "maxLength": 500,
+            "minLength": 1,
+            "title": "Motivo"
+          },
+          "documento": {
+            "type": "string",
+            "maxLength": 120,
+            "title": "Documento",
+            "default": ""
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "saliente",
+          "entrante",
+          "fecha",
+          "destino",
+          "motivo"
+        ],
+        "title": "Reemplazo"
+      },
+      "Carga": {
+        "properties": {
+          "tipo": {
+            "type": "string",
+            "enum": [
+              "stock",
+              "km",
+              "enganches"
+            ],
+            "title": "Tipo"
+          },
+          "separador": {
+            "type": "string",
+            "enum": [
+              "punto_y_coma",
+              "tab"
+            ],
+            "title": "Separador",
+            "default": "punto_y_coma"
+          },
+          "contenido": {
+            "type": "string",
+            "maxLength": 250000,
+            "minLength": 1,
+            "title": "Contenido"
+          },
+          "aplicar": {
+            "type": "boolean",
+            "title": "Aplicar",
+            "default": false
+          },
+          "hash_previsualizado": {
+            "anyOf": [
+              {
+                "type": "string",
+                "pattern": "^[0-9a-f]{64}$"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Hash Previsualizado"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "tipo",
+          "contenido"
+        ],
+        "title": "Carga"
+      },
+      "Alta": {
+        "properties": {
+          "precio": {
+            "anyOf": [
+              {
+                "type": "number",
+                "maximum": 999999999.0,
+                "minimum": 0.0
+              },
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Precio"
+          },
+          "mano_de_obra": {
+            "anyOf": [
+              {
+                "type": "number",
+                "maximum": 999999999.0,
+                "minimum": 0.0
+              },
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Mano De Obra"
+          },
+          "moneda_id": {
+            "anyOf": [
+              {
+                "type": "integer",
+                "exclusiveMinimum": 0.0
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Moneda Id"
+          },
+          "dot": {
+            "anyOf": [
+              {
+                "type": "string",
+                "maxLength": 40
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Dot"
+          },
+          "numero": {
+            "type": "string",
+            "maxLength": 80,
+            "title": "Numero",
+            "default": ""
+          },
+          "marca": {
+            "type": "string",
+            "maxLength": 80,
+            "title": "Marca"
+          },
+          "rodado": {
+            "type": "string",
+            "maxLength": 80,
+            "title": "Rodado"
+          },
+          "fecha": {
+            "type": "string",
+            "format": "date",
+            "title": "Fecha"
+          },
+          "banda": {
+            "anyOf": [
+              {
+                "type": "number",
+                "maximum": 100.0,
+                "minimum": 0.0
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Banda"
+          },
+          "recapados": {
+            "anyOf": [
+              {
+                "type": "integer",
+                "minimum": 0.0
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Recapados"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "marca",
+          "rodado",
+          "fecha"
+        ],
+        "title": "Alta"
+      },
+      "Movimiento": {
+        "properties": {
+          "precio": {
+            "anyOf": [
+              {
+                "type": "number",
+                "maximum": 999999999.0,
+                "minimum": 0.0
+              },
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Precio"
+          },
+          "mano_de_obra": {
+            "anyOf": [
+              {
+                "type": "number",
+                "maximum": 999999999.0,
+                "minimum": 0.0
+              },
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Mano De Obra"
+          },
+          "moneda_id": {
+            "anyOf": [
+              {
+                "type": "integer",
+                "exclusiveMinimum": 0.0
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Moneda Id"
+          },
+          "dot": {
+            "anyOf": [
+              {
+                "type": "string",
+                "maxLength": 40
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Dot"
+          },
+          "accion": {
+            "type": "string",
+            "enum": [
+              "montar",
+              "retirar",
+              "medir",
+              "enviar",
+              "retornar",
+              "rechazar",
+              "baja",
+              "disponer"
+            ],
+            "title": "Accion"
+          },
+          "version": {
+            "type": "integer",
+            "exclusiveMinimum": 0.0,
+            "title": "Version"
+          },
+          "fecha": {
+            "type": "string",
+            "format": "date",
+            "title": "Fecha"
+          },
+          "equipo_id": {
+            "anyOf": [
+              {
+                "type": "integer",
+                "exclusiveMinimum": 0.0
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Equipo Id"
+          },
+          "posicion": {
+            "anyOf": [
+              {
+                "type": "integer",
+                "exclusiveMinimum": 0.0
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Posicion"
+          },
+          "proveedor_id": {
+            "anyOf": [
+              {
+                "type": "integer",
+                "exclusiveMinimum": 0.0
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Proveedor Id"
+          },
+          "km": {
+            "anyOf": [
+              {
+                "type": "integer",
+                "minimum": 0.0
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Km"
+          },
+          "banda": {
+            "anyOf": [
+              {
+                "type": "number",
+                "maximum": 100.0,
+                "minimum": 0.0
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Banda"
+          },
+          "recapado": {
+            "type": "boolean",
+            "title": "Recapado",
+            "default": false
+          },
+          "documento": {
+            "type": "string",
+            "maxLength": 120,
+            "title": "Documento",
+            "default": ""
+          },
+          "motivo": {
+            "type": "string",
+            "maxLength": 500,
+            "title": "Motivo",
+            "default": ""
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "accion",
+          "version",
+          "fecha"
+        ],
+        "title": "Movimiento"
       },
       "Comprobante": {
         "properties": {
@@ -1209,7 +5431,7 @@
           },
           "lineas": {
             "items": {
-              "$ref": "#/components/schemas/Linea"
+              "$ref": "#/components/schemas/aplicacion__servicios__Linea"
             },
             "type": "array",
             "maxItems": 100,
@@ -1231,592 +5453,7 @@
         ],
         "title": "Comprobante"
       },
-      "Configuracion": {
-        "properties": {
-          "moneda_base_id": {
-            "type": "integer",
-            "exclusiveMinimum": 0.0,
-            "title": "Moneda Base Id"
-          },
-          "sucursal": {
-            "type": "integer",
-            "maximum": 9999.0,
-            "minimum": 1.0,
-            "title": "Sucursal",
-            "default": 1
-          },
-          "identificacion": {
-            "type": "string",
-            "maxLength": 40,
-            "title": "Identificacion",
-            "default": ""
-          },
-          "direccion": {
-            "type": "string",
-            "maxLength": 200,
-            "title": "Direccion",
-            "default": ""
-          }
-        },
-        "additionalProperties": false,
-        "type": "object",
-        "required": [
-          "moneda_base_id"
-        ],
-        "title": "Configuracion"
-      },
-      "Credential": {
-        "properties": {
-          "nombre": {
-            "type": "string",
-            "maxLength": 80,
-            "minLength": 1,
-            "title": "Nombre"
-          },
-          "permiso": {
-            "type": "string",
-            "pattern": "^(lectura|escritura|administracion)$",
-            "title": "Permiso",
-            "default": "lectura"
-          },
-          "dias": {
-            "type": "integer",
-            "maximum": 365.0,
-            "minimum": 1.0,
-            "title": "Dias",
-            "default": 30
-          },
-          "todos_los_tenants": {
-            "type": "boolean",
-            "title": "Todos Los Tenants",
-            "default": false
-          },
-          "tenants": {
-            "items": {
-              "type": "integer"
-            },
-            "type": "array",
-            "maxItems": 100,
-            "title": "Tenants"
-          }
-        },
-        "additionalProperties": false,
-        "type": "object",
-        "required": [
-          "nombre"
-        ],
-        "title": "Credential"
-      },
-      "Datos": {
-        "properties": {
-          "datos": {
-            "additionalProperties": true,
-            "type": "object",
-            "title": "Datos"
-          }
-        },
-        "additionalProperties": false,
-        "type": "object",
-        "required": [
-          "datos"
-        ],
-        "title": "Datos"
-      },
-      "Decision": {
-        "properties": {
-          "aprobar": {
-            "type": "boolean",
-            "title": "Aprobar"
-          },
-          "version": {
-            "type": "integer",
-            "exclusiveMinimum": 0.0,
-            "title": "Version"
-          },
-          "nota": {
-            "type": "string",
-            "maxLength": 1000,
-            "title": "Nota",
-            "default": ""
-          }
-        },
-        "additionalProperties": false,
-        "type": "object",
-        "required": [
-          "aprobar",
-          "version"
-        ],
-        "title": "Decision"
-      },
-      "Destination": {
-        "properties": {
-          "correo": {
-            "type": "string",
-            "maxLength": 254,
-            "minLength": 3,
-            "title": "Correo"
-          }
-        },
-        "additionalProperties": false,
-        "type": "object",
-        "required": [
-          "correo"
-        ],
-        "title": "Destination"
-      },
-      "DriverClose": {
-        "properties": {
-          "regreso": {
-            "type": "string",
-            "format": "date",
-            "title": "Regreso"
-          },
-          "km_regreso": {
-            "type": "integer",
-            "maximum": 99999999.0,
-            "minimum": 0.0,
-            "title": "Km Regreso"
-          },
-          "efectivo_declarado": {
-            "anyOf": [
-              {
-                "type": "number",
-                "maximum": 999999999.0,
-                "minimum": 0.0
-              },
-              {
-                "type": "string"
-              }
-            ],
-            "title": "Efectivo Declarado"
-          },
-          "nota": {
-            "type": "string",
-            "maxLength": 1000,
-            "title": "Nota",
-            "default": ""
-          }
-        },
-        "additionalProperties": false,
-        "type": "object",
-        "required": [
-          "regreso",
-          "km_regreso",
-          "efectivo_declarado"
-        ],
-        "title": "DriverClose"
-      },
-      "DriverLink": {
-        "properties": {
-          "usuario_id": {
-            "type": "integer",
-            "exclusiveMinimum": 0.0,
-            "title": "Usuario Id"
-          },
-          "chofer_id": {
-            "type": "integer",
-            "exclusiveMinimum": 0.0,
-            "title": "Chofer Id"
-          }
-        },
-        "additionalProperties": false,
-        "type": "object",
-        "required": [
-          "usuario_id",
-          "chofer_id"
-        ],
-        "title": "DriverLink"
-      },
-      "DriverUser": {
-        "properties": {
-          "usuario": {
-            "type": "string",
-            "pattern": "^[A-Za-z0-9_.-]{3,60}$",
-            "title": "Usuario"
-          },
-          "nombre": {
-            "type": "string",
-            "maxLength": 100,
-            "minLength": 1,
-            "title": "Nombre"
-          },
-          "password": {
-            "type": "string",
-            "maxLength": 256,
-            "minLength": 12,
-            "title": "Password"
-          },
-          "chofer_id": {
-            "type": "integer",
-            "exclusiveMinimum": 0.0,
-            "title": "Chofer Id"
-          }
-        },
-        "additionalProperties": false,
-        "type": "object",
-        "required": [
-          "usuario",
-          "nombre",
-          "password",
-          "chofer_id"
-        ],
-        "title": "DriverUser"
-      },
-      "EditTenant": {
-        "properties": {
-          "nombre": {
-            "type": "string",
-            "maxLength": 120,
-            "minLength": 1,
-            "title": "Nombre"
-          },
-          "correo_admin": {
-            "type": "string",
-            "maxLength": 254,
-            "title": "Correo Admin"
-          },
-          "notas": {
-            "type": "string",
-            "maxLength": 2000,
-            "title": "Notas",
-            "default": ""
-          },
-          "mailcow": {
-            "anyOf": [
-              {
-                "$ref": "#/components/schemas/Settings"
-              },
-              {
-                "type": "null"
-              }
-            ]
-          },
-          "version": {
-            "type": "integer",
-            "exclusiveMinimum": 0.0,
-            "title": "Version"
-          }
-        },
-        "additionalProperties": false,
-        "type": "object",
-        "required": [
-          "nombre",
-          "correo_admin",
-          "version"
-        ],
-        "title": "EditTenant"
-      },
-      "EditUser": {
-        "properties": {
-          "nombre": {
-            "type": "string",
-            "maxLength": 100,
-            "minLength": 1,
-            "title": "Nombre"
-          },
-          "correo": {
-            "type": "string",
-            "maxLength": 254,
-            "title": "Correo",
-            "default": ""
-          },
-          "rol": {
-            "type": "string",
-            "pattern": "^(superadmin|admin|operador|consulta|logistica|chofer)$",
-            "title": "Rol"
-          },
-          "empresas": {
-            "items": {
-              "type": "integer"
-            },
-            "type": "array",
-            "maxItems": 100,
-            "title": "Empresas"
-          },
-          "activo": {
-            "type": "boolean",
-            "title": "Activo",
-            "default": true
-          },
-          "password": {
-            "anyOf": [
-              {
-                "type": "string",
-                "maxLength": 256,
-                "minLength": 12
-              },
-              {
-                "type": "null"
-              }
-            ],
-            "title": "Password"
-          }
-        },
-        "additionalProperties": false,
-        "type": "object",
-        "required": [
-          "nombre",
-          "rol"
-        ],
-        "title": "EditUser"
-      },
-      "Empresa": {
-        "properties": {
-          "nombre": {
-            "type": "string",
-            "maxLength": 120,
-            "minLength": 1,
-            "title": "Nombre"
-          }
-        },
-        "additionalProperties": false,
-        "type": "object",
-        "required": [
-          "nombre"
-        ],
-        "title": "Empresa"
-      },
-      "ExpectedExpense": {
-        "properties": {
-          "fecha": {
-            "type": "string",
-            "format": "date",
-            "title": "Fecha"
-          },
-          "concepto": {
-            "type": "string",
-            "maxLength": 200,
-            "minLength": 1,
-            "title": "Concepto"
-          },
-          "importe": {
-            "anyOf": [
-              {
-                "type": "number",
-                "maximum": 999999999.0,
-                "exclusiveMinimum": 0.0
-              },
-              {
-                "type": "string"
-              }
-            ],
-            "title": "Importe"
-          },
-          "comprobante": {
-            "type": "string",
-            "maxLength": 100,
-            "title": "Comprobante",
-            "default": ""
-          }
-        },
-        "additionalProperties": false,
-        "type": "object",
-        "required": [
-          "fecha",
-          "concepto",
-          "importe"
-        ],
-        "title": "ExpectedExpense"
-      },
-      "ExpenseActual": {
-        "properties": {
-          "fecha": {
-            "type": "string",
-            "format": "date",
-            "title": "Fecha"
-          },
-          "concepto": {
-            "type": "string",
-            "maxLength": 200,
-            "minLength": 1,
-            "title": "Concepto"
-          },
-          "importe": {
-            "anyOf": [
-              {
-                "type": "number",
-                "maximum": 999999999.0,
-                "exclusiveMinimum": 0.0
-              },
-              {
-                "type": "string"
-              }
-            ],
-            "title": "Importe"
-          },
-          "comprobante": {
-            "type": "string",
-            "maxLength": 100,
-            "title": "Comprobante",
-            "default": ""
-          },
-          "nota": {
-            "type": "string",
-            "maxLength": 1000,
-            "title": "Nota",
-            "default": ""
-          },
-          "solicitud_id": {
-            "anyOf": [
-              {
-                "type": "integer",
-                "exclusiveMinimum": 0.0
-              },
-              {
-                "type": "null"
-              }
-            ],
-            "title": "Solicitud Id"
-          }
-        },
-        "additionalProperties": false,
-        "type": "object",
-        "required": [
-          "fecha",
-          "concepto",
-          "importe"
-        ],
-        "title": "ExpenseActual"
-      },
-      "ExpenseRequest": {
-        "properties": {
-          "fecha": {
-            "type": "string",
-            "format": "date",
-            "title": "Fecha"
-          },
-          "concepto": {
-            "type": "string",
-            "maxLength": 200,
-            "minLength": 1,
-            "title": "Concepto"
-          },
-          "importe": {
-            "anyOf": [
-              {
-                "type": "number",
-                "maximum": 999999999.0,
-                "exclusiveMinimum": 0.0
-              },
-              {
-                "type": "string"
-              }
-            ],
-            "title": "Importe"
-          },
-          "comprobante": {
-            "type": "string",
-            "maxLength": 100,
-            "title": "Comprobante",
-            "default": ""
-          },
-          "nota": {
-            "type": "string",
-            "maxLength": 1000,
-            "title": "Nota",
-            "default": ""
-          }
-        },
-        "additionalProperties": false,
-        "type": "object",
-        "required": [
-          "fecha",
-          "concepto",
-          "importe"
-        ],
-        "title": "ExpenseRequest"
-      },
-      "HTTPValidationError": {
-        "properties": {
-          "detail": {
-            "items": {
-              "$ref": "#/components/schemas/ValidationError"
-            },
-            "type": "array",
-            "title": "Detail"
-          }
-        },
-        "type": "object",
-        "title": "HTTPValidationError"
-      },
-      "Inicio": {
-        "properties": {
-          "usuario": {
-            "type": "string",
-            "maxLength": 60,
-            "minLength": 1,
-            "title": "Usuario"
-          },
-          "password": {
-            "type": "string",
-            "maxLength": 256,
-            "minLength": 1,
-            "title": "Password"
-          },
-          "nombre": {
-            "type": "string",
-            "maxLength": 100,
-            "minLength": 1,
-            "title": "Nombre"
-          },
-          "empresa": {
-            "type": "string",
-            "maxLength": 120,
-            "minLength": 1,
-            "title": "Empresa"
-          }
-        },
-        "additionalProperties": false,
-        "type": "object",
-        "required": [
-          "usuario",
-          "password",
-          "nombre",
-          "empresa"
-        ],
-        "title": "Inicio"
-      },
-      "License": {
-        "properties": {
-          "meses": {
-            "type": "integer",
-            "maximum": 120.0,
-            "minimum": 1.0,
-            "title": "Meses",
-            "default": 6
-          },
-          "version": {
-            "type": "integer",
-            "minimum": 0.0,
-            "title": "Version"
-          },
-          "modo": {
-            "type": "string",
-            "pattern": "^(renovar|reemplazar)$",
-            "title": "Modo",
-            "default": "renovar"
-          },
-          "inicio": {
-            "anyOf": [
-              {
-                "type": "string",
-                "format": "date"
-              },
-              {
-                "type": "null"
-              }
-            ],
-            "title": "Inicio"
-          }
-        },
-        "additionalProperties": false,
-        "type": "object",
-        "required": [
-          "version"
-        ],
-        "title": "License"
-      },
-      "Linea": {
+      "aplicacion__servicios__Linea": {
         "properties": {
           "detalle": {
             "type": "string",
@@ -1859,283 +5496,6 @@
           "precio"
         ],
         "title": "Linea"
-      },
-      "Login": {
-        "properties": {
-          "usuario": {
-            "type": "string",
-            "maxLength": 60,
-            "minLength": 1,
-            "title": "Usuario"
-          },
-          "password": {
-            "type": "string",
-            "maxLength": 256,
-            "minLength": 1,
-            "title": "Password"
-          }
-        },
-        "additionalProperties": false,
-        "type": "object",
-        "required": [
-          "usuario",
-          "password"
-        ],
-        "title": "Login"
-      },
-      "LogisticsClose": {
-        "properties": {
-          "version": {
-            "type": "integer",
-            "exclusiveMinimum": 0.0,
-            "title": "Version"
-          },
-          "devolucion": {
-            "anyOf": [
-              {
-                "type": "number",
-                "maximum": 999999999.0,
-                "minimum": 0.0
-              },
-              {
-                "type": "string"
-              }
-            ],
-            "title": "Devolucion"
-          },
-          "fecha": {
-            "type": "string",
-            "format": "date",
-            "title": "Fecha"
-          },
-          "nota": {
-            "type": "string",
-            "maxLength": 1000,
-            "title": "Nota",
-            "default": ""
-          }
-        },
-        "additionalProperties": false,
-        "type": "object",
-        "required": [
-          "version",
-          "devolucion",
-          "fecha"
-        ],
-        "title": "LogisticsClose"
-      },
-      "MailSettings": {
-        "properties": {
-          "habilitado": {
-            "type": "boolean",
-            "title": "Habilitado",
-            "default": false
-          },
-          "host": {
-            "type": "string",
-            "maxLength": 253,
-            "title": "Host",
-            "default": ""
-          },
-          "puerto": {
-            "type": "integer",
-            "maximum": 65535.0,
-            "minimum": 1.0,
-            "title": "Puerto",
-            "default": 587
-          },
-          "seguridad": {
-            "type": "string",
-            "pattern": "^(starttls|tls)$",
-            "title": "Seguridad",
-            "default": "starttls"
-          },
-          "usuario": {
-            "type": "string",
-            "maxLength": 254,
-            "title": "Usuario",
-            "default": ""
-          },
-          "password": {
-            "anyOf": [
-              {
-                "type": "string",
-                "maxLength": 1000
-              },
-              {
-                "type": "null"
-              }
-            ],
-            "title": "Password"
-          },
-          "remitente": {
-            "type": "string",
-            "maxLength": 254,
-            "title": "Remitente",
-            "default": ""
-          },
-          "nombre": {
-            "type": "string",
-            "maxLength": 120,
-            "minLength": 1,
-            "title": "Nombre",
-            "default": "PASO"
-          }
-        },
-        "additionalProperties": false,
-        "type": "object",
-        "title": "MailSettings"
-      },
-      "MailTest": {
-        "properties": {
-          "destinatario": {
-            "type": "string",
-            "maxLength": 254,
-            "title": "Destinatario"
-          }
-        },
-        "additionalProperties": false,
-        "type": "object",
-        "required": [
-          "destinatario"
-        ],
-        "title": "MailTest"
-      },
-      "MicCrt": {
-        "properties": {
-          "version": {
-            "type": "integer",
-            "exclusiveMinimum": 0.0,
-            "title": "Version"
-          },
-          "crt_id": {
-            "type": "integer",
-            "exclusiveMinimum": 0.0,
-            "title": "Crt Id"
-          }
-        },
-        "additionalProperties": false,
-        "type": "object",
-        "required": [
-          "version",
-          "crt_id"
-        ],
-        "title": "MicCrt"
-      },
-      "MicCrtDelete": {
-        "properties": {
-          "version": {
-            "type": "integer",
-            "exclusiveMinimum": 0.0,
-            "title": "Version"
-          },
-          "hoja_version": {
-            "type": "integer",
-            "exclusiveMinimum": 0.0,
-            "title": "Hoja Version"
-          }
-        },
-        "additionalProperties": false,
-        "type": "object",
-        "required": [
-          "version",
-          "hoja_version"
-        ],
-        "title": "MicCrtDelete"
-      },
-      "NewTenant": {
-        "properties": {
-          "nombre": {
-            "type": "string",
-            "maxLength": 120,
-            "minLength": 1,
-            "title": "Nombre"
-          },
-          "correo_admin": {
-            "type": "string",
-            "maxLength": 254,
-            "title": "Correo Admin"
-          },
-          "notas": {
-            "type": "string",
-            "maxLength": 2000,
-            "title": "Notas",
-            "default": ""
-          },
-          "mailcow": {
-            "anyOf": [
-              {
-                "$ref": "#/components/schemas/Settings"
-              },
-              {
-                "type": "null"
-              }
-            ]
-          },
-          "meses": {
-            "type": "integer",
-            "maximum": 120.0,
-            "minimum": 0.0,
-            "title": "Meses",
-            "default": 6
-          }
-        },
-        "additionalProperties": false,
-        "type": "object",
-        "required": [
-          "nombre",
-          "correo_admin"
-        ],
-        "title": "NewTenant"
-      },
-      "NewUser": {
-        "properties": {
-          "nombre": {
-            "type": "string",
-            "maxLength": 100,
-            "minLength": 1,
-            "title": "Nombre"
-          },
-          "correo": {
-            "type": "string",
-            "maxLength": 254,
-            "title": "Correo",
-            "default": ""
-          },
-          "rol": {
-            "type": "string",
-            "pattern": "^(superadmin|admin|operador|consulta|logistica|chofer)$",
-            "title": "Rol"
-          },
-          "empresas": {
-            "items": {
-              "type": "integer"
-            },
-            "type": "array",
-            "maxItems": 100,
-            "title": "Empresas"
-          },
-          "usuario": {
-            "type": "string",
-            "pattern": "^[A-Za-z0-9_.-]{3,60}$",
-            "title": "Usuario"
-          },
-          "password": {
-            "type": "string",
-            "maxLength": 256,
-            "minLength": 12,
-            "title": "Password"
-          }
-        },
-        "additionalProperties": false,
-        "type": "object",
-        "required": [
-          "nombre",
-          "rol",
-          "usuario",
-          "password"
-        ],
-        "title": "NewUser"
       },
       "Pago": {
         "properties": {
@@ -2194,28 +5554,110 @@
         ],
         "title": "Pago"
       },
-      "Password": {
+      "Asignacion": {
         "properties": {
-          "actual": {
-            "type": "string",
-            "maxLength": 256,
-            "minLength": 1,
-            "title": "Actual"
+          "comprobante_id": {
+            "type": "integer",
+            "exclusiveMinimum": 0.0,
+            "title": "Comprobante Id"
           },
-          "nueva": {
-            "type": "string",
-            "maxLength": 256,
-            "minLength": 12,
-            "title": "Nueva"
+          "importe": {
+            "anyOf": [
+              {
+                "type": "number",
+                "maximum": 999999999.0,
+                "exclusiveMinimum": 0.0
+              },
+              {
+                "type": "string"
+              }
+            ],
+            "title": "Importe"
           }
         },
         "additionalProperties": false,
         "type": "object",
         "required": [
-          "actual",
-          "nueva"
+          "comprobante_id",
+          "importe"
         ],
-        "title": "Password"
+        "title": "Asignacion"
+      },
+      "Compensacion": {
+        "properties": {
+          "fecha": {
+            "type": "string",
+            "format": "date",
+            "title": "Fecha"
+          },
+          "credito_id": {
+            "type": "integer",
+            "exclusiveMinimum": 0.0,
+            "title": "Credito Id"
+          },
+          "debito_id": {
+            "type": "integer",
+            "exclusiveMinimum": 0.0,
+            "title": "Debito Id"
+          },
+          "importe": {
+            "anyOf": [
+              {
+                "type": "number",
+                "maximum": 999999999.0,
+                "exclusiveMinimum": 0.0
+              },
+              {
+                "type": "string"
+              }
+            ],
+            "title": "Importe"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "fecha",
+          "credito_id",
+          "debito_id",
+          "importe"
+        ],
+        "title": "Compensacion"
+      },
+      "Stock": {
+        "properties": {
+          "fecha": {
+            "type": "string",
+            "format": "date",
+            "title": "Fecha"
+          },
+          "repuesto_id": {
+            "type": "integer",
+            "exclusiveMinimum": 0.0,
+            "title": "Repuesto Id"
+          },
+          "cantidad": {
+            "type": "integer",
+            "maximum": 999999.0,
+            "minimum": -999999.0,
+            "title": "Cantidad"
+          },
+          "motivo": {
+            "type": "string",
+            "maxLength": 250,
+            "minLength": 3,
+            "title": "Motivo"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "fecha",
+          "repuesto_id",
+          "cantidad",
+          "motivo"
+        ],
+        "title": "Stock"
       },
       "Reparacion": {
         "properties": {
@@ -2291,147 +5733,109 @@
         ],
         "title": "Reparacion"
       },
-      "ResourceName": {
-        "type": "string",
-        "enum": [
-          "clientes",
-          "proveedores",
-          "propietarios",
-          "empresas",
-          "choferes",
-          "equipos",
-          "distancias",
-          "monedas",
-          "impuestos",
-          "condiciones",
-          "cotizaciones",
-          "crt",
-          "mic",
-          "mic_hojas",
-          "hojas_ruta",
-          "desgloses",
-          "rendiciones",
-          "gastos",
-          "repuestos",
-          "comprobantes",
-          "pagos",
-          "aplicaciones",
-          "reparaciones",
-          "stock"
-        ],
-        "title": "ResourceName"
-      },
-      "Settings": {
+      "MicCrt": {
         "properties": {
-          "habilitado": {
-            "type": "boolean",
-            "title": "Habilitado",
-            "default": false
+          "version": {
+            "type": "integer",
+            "exclusiveMinimum": 0.0,
+            "title": "Version"
           },
-          "url_base": {
-            "type": "string",
-            "maxLength": 500,
-            "title": "Url Base",
-            "default": ""
+          "crt_id": {
+            "type": "integer",
+            "exclusiveMinimum": 0.0,
+            "title": "Crt Id"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "version",
+          "crt_id"
+        ],
+        "title": "MicCrt"
+      },
+      "MicCrtDelete": {
+        "properties": {
+          "version": {
+            "type": "integer",
+            "exclusiveMinimum": 0.0,
+            "title": "Version"
           },
-          "client_id": {
-            "type": "string",
-            "maxLength": 300,
-            "title": "Client Id",
-            "default": ""
+          "hoja_version": {
+            "type": "integer",
+            "exclusiveMinimum": 0.0,
+            "title": "Hoja Version"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "version",
+          "hoja_version"
+        ],
+        "title": "MicCrtDelete"
+      },
+      "Accion": {
+        "properties": {
+          "version": {
+            "type": "integer",
+            "exclusiveMinimum": 0.0,
+            "title": "Version"
           },
-          "client_secret": {
+          "fecha": {
             "anyOf": [
               {
                 "type": "string",
-                "maxLength": 2000
+                "format": "date"
               },
               {
                 "type": "null"
               }
             ],
-            "title": "Client Secret"
-          },
-          "redirect_uri": {
-            "type": "string",
-            "maxLength": 1000,
-            "title": "Redirect Uri",
-            "default": ""
-          },
-          "dominios": {
-            "items": {
-              "type": "string"
-            },
-            "type": "array",
-            "maxItems": 100,
-            "title": "Dominios"
-          }
-        },
-        "additionalProperties": false,
-        "type": "object",
-        "title": "Settings"
-      },
-      "Stock": {
-        "properties": {
-          "fecha": {
-            "type": "string",
-            "format": "date",
             "title": "Fecha"
           },
-          "repuesto_id": {
-            "type": "integer",
-            "exclusiveMinimum": 0.0,
-            "title": "Repuesto Id"
-          },
-          "cantidad": {
-            "type": "integer",
-            "maximum": 999999.0,
-            "minimum": -999999.0,
-            "title": "Cantidad"
-          },
-          "motivo": {
-            "type": "string",
-            "maxLength": 250,
-            "minLength": 3,
-            "title": "Motivo"
+          "cotizacion": {
+            "anyOf": [
+              {
+                "type": "number",
+                "maximum": 10000000.0,
+                "exclusiveMinimum": 0.0
+              },
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Cotizacion"
           }
         },
         "additionalProperties": false,
         "type": "object",
         "required": [
-          "fecha",
-          "repuesto_id",
-          "cantidad",
-          "motivo"
-        ],
-        "title": "Stock"
-      },
-      "Suspension": {
-        "properties": {
-          "suspendida": {
-            "type": "boolean",
-            "title": "Suspendida"
-          },
-          "version": {
-            "type": "integer",
-            "exclusiveMinimum": 0.0,
-            "title": "Version"
-          }
-        },
-        "additionalProperties": false,
-        "type": "object",
-        "required": [
-          "suspendida",
           "version"
         ],
-        "title": "Suspension"
+        "title": "Accion"
       },
-      "TenantRole": {
+      "aplicacion__operacion_tenant__Estado": {
         "properties": {
-          "rol": {
+          "estado": {
             "type": "string",
-            "pattern": "^(consulta|operador|admin|logistica|chofer)$",
-            "title": "Rol"
+            "enum": [
+              "activo",
+              "baja",
+              "mantenimiento",
+              "externo",
+              "prolongado"
+            ],
+            "title": "Estado"
+          },
+          "nota": {
+            "type": "string",
+            "maxLength": 500,
+            "title": "Nota",
+            "default": ""
           },
           "version": {
             "type": "integer",
@@ -2442,10 +5846,10 @@
         "additionalProperties": false,
         "type": "object",
         "required": [
-          "rol",
+          "estado",
           "version"
         ],
-        "title": "TenantRole"
+        "title": "Estado"
       },
       "Trip": {
         "properties": {
@@ -2555,106 +5959,149 @@
         ],
         "title": "Trip"
       },
-      "Usuario": {
+      "ExpectedExpense": {
         "properties": {
-          "usuario": {
+          "fecha": {
             "type": "string",
-            "maxLength": 60,
-            "minLength": 1,
-            "title": "Usuario"
+            "format": "date",
+            "title": "Fecha"
           },
-          "password": {
+          "concepto": {
             "type": "string",
-            "maxLength": 256,
+            "maxLength": 200,
             "minLength": 1,
-            "title": "Password"
+            "title": "Concepto"
           },
-          "nombre": {
+          "importe": {
+            "anyOf": [
+              {
+                "type": "number",
+                "maximum": 999999999.0,
+                "exclusiveMinimum": 0.0
+              },
+              {
+                "type": "string"
+              }
+            ],
+            "title": "Importe"
+          },
+          "comprobante": {
             "type": "string",
             "maxLength": 100,
-            "minLength": 1,
-            "title": "Nombre"
-          },
-          "rol": {
-            "type": "string",
-            "pattern": "^(admin|operador|consulta|logistica)$",
-            "title": "Rol"
-          },
-          "empresas": {
-            "items": {
-              "type": "integer"
-            },
-            "type": "array",
-            "maxItems": 100,
-            "minItems": 1,
-            "title": "Empresas"
+            "title": "Comprobante",
+            "default": ""
           }
         },
         "additionalProperties": false,
         "type": "object",
         "required": [
-          "usuario",
-          "password",
-          "nombre",
-          "rol",
-          "empresas"
+          "fecha",
+          "concepto",
+          "importe"
         ],
-        "title": "Usuario"
+        "title": "ExpectedExpense"
       },
-      "ValidationError": {
+      "CashMovement": {
         "properties": {
-          "loc": {
-            "items": {
-              "anyOf": [
-                {
-                  "type": "string"
-                },
-                {
-                  "type": "integer"
-                }
-              ]
-            },
-            "type": "array",
-            "title": "Location"
-          },
-          "msg": {
+          "fecha": {
             "type": "string",
-            "title": "Message"
+            "format": "date",
+            "title": "Fecha"
           },
-          "type": {
+          "importe": {
+            "anyOf": [
+              {
+                "type": "number",
+                "maximum": 999999999.0,
+                "exclusiveMinimum": 0.0
+              },
+              {
+                "type": "string"
+              }
+            ],
+            "title": "Importe"
+          },
+          "referencia": {
             "type": "string",
-            "title": "Error Type"
-          },
-          "input": {
-            "title": "Input"
-          },
-          "ctx": {
-            "type": "object",
-            "title": "Context"
+            "maxLength": 200,
+            "title": "Referencia",
+            "default": ""
           }
         },
+        "additionalProperties": false,
         "type": "object",
         "required": [
-          "loc",
-          "msg",
-          "type"
+          "fecha",
+          "importe"
         ],
-        "title": "ValidationError"
+        "title": "CashMovement"
       },
-      "Version": {
+      "aplicacion__logistica__Decision": {
+        "properties": {
+          "aprobar": {
+            "type": "boolean",
+            "title": "Aprobar"
+          },
+          "version": {
+            "type": "integer",
+            "exclusiveMinimum": 0.0,
+            "title": "Version"
+          },
+          "nota": {
+            "type": "string",
+            "maxLength": 1000,
+            "title": "Nota",
+            "default": ""
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "aprobar",
+          "version"
+        ],
+        "title": "Decision"
+      },
+      "LogisticsClose": {
         "properties": {
           "version": {
             "type": "integer",
             "exclusiveMinimum": 0.0,
             "title": "Version"
+          },
+          "devolucion": {
+            "anyOf": [
+              {
+                "type": "number",
+                "maximum": 999999999.0,
+                "minimum": 0.0
+              },
+              {
+                "type": "string"
+              }
+            ],
+            "title": "Devolucion"
+          },
+          "fecha": {
+            "type": "string",
+            "format": "date",
+            "title": "Fecha"
+          },
+          "nota": {
+            "type": "string",
+            "maxLength": 1000,
+            "title": "Nota",
+            "default": ""
           }
         },
         "additionalProperties": false,
         "type": "object",
         "required": [
-          "version"
+          "version",
+          "devolucion",
+          "fecha"
         ],
-        "title": "Version"
+        "title": "LogisticsClose"
       }
     },
     "securitySchemes": {
