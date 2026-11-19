@@ -30,6 +30,8 @@ curl -X POST 'https://api.demo.paso.sys.ar/api/v1/operaciones/comprobantes' \
 
 ## Guías
 
+- [Usuarios, permisos y disponibilidad de flota](docs/roles-invitaciones-flota.md)
+
 - [Autenticación y permisos](docs/autenticacion.md)
 - [Sandbox y paso a producción](docs/sandbox.md)
 - [Errores, concurrencia e idempotencia](docs/errores.md)
